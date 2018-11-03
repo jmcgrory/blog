@@ -2,18 +2,17 @@ import Model from './Model';
 import { TagModel } from '.';
 import { Property } from './Properties';
 
-
 class CardModel extends Model {
 
-    title: string;
+    public title: string;
 
-    blurb: string;
+    public blurb: string;
 
-    link: string;
+    public link: string;
 
-    image: string;
+    public image: string;
 
-    tags: TagModel[];
+    public tags: TagModel[];
 
     public static type: string = 'card';
 

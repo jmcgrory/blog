@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GithubService } from 'src/app/services/github/github.service';
 
 @Component({
   selector: 'about-component',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  content: string = `### Bonjour!`;
+
+  constructor(
+    private githubService: GithubService
+  ) { }
 
   ngOnInit() {
+
+    const test = this.githubService.getGit().subscribe((data) => {
+
+      console.log(data);
+
+    });
+
   }
 
 }

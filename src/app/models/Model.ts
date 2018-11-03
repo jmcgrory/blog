@@ -19,6 +19,7 @@ abstract class Model {
 
     }
 
+    // TODO: Needs to be from snake_case to camelCase
     public fromData = (data: any): this => {
 
         const properties: Map<string, any> = this.getProperties();
