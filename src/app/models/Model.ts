@@ -1,6 +1,15 @@
+import { Property, TimeProperty } from './Properties';
+import { Moment } from 'moment';
+
 abstract class Model {
 
     public id: number;
+
+    public createdAt: Moment;
+
+    public updatedAt: Moment;
+
+    public deletedAt: Moment;
 
     public static type: string;
 
@@ -12,13 +21,15 @@ abstract class Model {
 
     public fromData = (data: any): this => {
 
-        const properties: string[] = this.getProperties();
+        const properties: Map<string, any> = this.getProperties();
 
         Object.entries(data).forEach(([key, value]) => {
 
-            if (properties.includes(key)) {
+            if (properties.has(key)) {
 
-                this[key] = value;
+                const Property = properties.get('key');
+
+                this[key] = new Property(value);
 
             }
 
@@ -28,21 +39,27 @@ abstract class Model {
 
     };
 
-    protected defaultProperties = (): string[] => [
+    protected defaultProperties = (): Map<string, any> => new Map([
 
-        'id',
+        ['id', Property],
 
-    ];
+        ['createdAt', TimeProperty],
 
-    protected assignableProperties = (): string[] => [];
+        ['updatedAt', TimeProperty],
 
-    protected getProperties = (): string[] => [
+        ['deletedAt', TimeProperty],
+
+    ]);
+
+    protected assignableProperties = (): Map<string, any> => new Map();
+
+    protected getProperties = (): Map<string, any> => new Map([
 
         ...this.defaultProperties(),
 
         ...this.assignableProperties(),
 
-    ];
+    ]);
 
 
 

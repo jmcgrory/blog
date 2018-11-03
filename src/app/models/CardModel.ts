@@ -1,12 +1,12 @@
 import Model from './Model';
-import TagModel from './TagModel';
+import { TagModel } from '.';
 import { Moment } from 'moment';
+import { Property } from './Properties';
+
 
 class CardModel extends Model {
 
     title: string;
-
-    date: Moment;
 
     text: string;
 
@@ -18,11 +18,19 @@ class CardModel extends Model {
 
     public static type: string = 'card';
 
-    constructor(data: any) {
+    protected assignableProperties = (): Map<string, any> => new Map([
 
-        super(data);
+        ['title', Property],
 
-    }
+        ['text', Property],
+
+        ['link', Property],
+
+        ['image', Property],
+
+        ['tags', Property],
+
+    ]);
 
 }
 
