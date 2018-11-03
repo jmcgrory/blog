@@ -31,6 +31,8 @@ import { NavigationComponent } from './components/layout/navigation/navigation.c
 // Custom
 
 import { MarkdownModule } from 'ngx-markdown';
+import { CardsComponent } from './components/layout/cards/cards.component';
+import { ImageComponent } from './components/layout/image/image.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { MarkdownModule } from 'ngx-markdown';
     ContentComponent,
     CardComponent,
     NavigationComponent,
+    CardsComponent,
+    ImageComponent,
   ],
   imports: [
     BrowserModule,

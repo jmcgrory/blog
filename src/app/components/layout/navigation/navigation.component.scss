@@ -3,17 +3,19 @@
 
 header {
 
+    margin: 0.5em auto;
+
     @include flexbox;
 
     @include justify-content(space-between);
 
     @include align-items(baseline);
 
-    padding: 0.5em 0;
-
 }
 
 h1 {
+
+    margin: 0 auto;
 
     @include flex-shrink(0);
 
@@ -25,11 +27,13 @@ nav {
 
     ul {
 
+        margin: 0 auto;
+
+        list-style: none;
+
         @include flexbox;
 
         @include justify-content(flex-end);
-
-        list-style: none;
 
     }
     

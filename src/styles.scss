@@ -31,6 +31,8 @@ a {
 
 h1, h2, h3, h4, h5, h6 {
 
+    margin: 0.25em auto 0.5em;
+
     font-weight: $bold;
 
 }
@@ -57,72 +59,28 @@ h3, h4 {
 
 hr {
 
-    margin: 0.5em auto;
+    margin: 1em auto;
 
     border-width: 0;
 
     border-bottom: 2px solid $primary;
 
+    &.subtle {
+
+        border-bottom: 1px solid $shade-light;
+
+    }
+
 }
 
+ul {
 
-// TODO: REMOVE BELOW
+    margin: 0.5em 0 1em 1em;
+
+}
 
 p {
 
-    &.primary {
-
-        background-color: $primary;
-
-        padding: 0.5em;
-
-        color: white;
-
-    }
-    &.warning {
-
-        background-color: $warning;
-
-        padding: 0.5em;
-
-        color: white;
-
-    }
-    &.success {
-
-        background-color: $success;
-
-        padding: 0.5em;
-
-        color: white;
-
-    }
-    &.shade-dark {
-
-        background-color: $shade-dark;
-
-        padding: 0.5em;
-
-        color: white;
-
-    }
-    &.shade-medium {
-
-        background-color: $shade-medium;
-
-        padding: 0.5em;
-
-        color: white;
-
-    }
-    &.shade-light {
-
-        background-color: $shade-light;
-
-        padding: 0.5em;
-
-        color: white;
-
-    }
+    margin: 0.5em auto 1em;
 
 }
