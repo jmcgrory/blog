@@ -1,10 +1,18 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
+  selector: 'root-component',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'jmcgr';
+
+  year: number;
+
+  constructor() {
+
+    this.year = new Date().getFullYear();
+
+  }
+
 }

@@ -1,0 +1,64 @@
+@import '../../../partials/mixins';
+@import '../../../partials/extends';
+
+header {
+
+    @include flexbox;
+
+    @include justify-content(space-between);
+
+    @include align-items(baseline);
+
+    padding: 0.5em 0;
+
+}
+
+h1 {
+
+    @include flex-shrink(0);
+
+}
+
+nav {
+
+    @include flex-grow(1);
+
+    ul {
+
+        @include flexbox;
+
+        @include justify-content(flex-end);
+
+        list-style: none;
+
+    }
+    
+    a {
+
+        padding: 0.25em 0.75em;
+    
+        text-decoration: none;
+
+        &:hover {
+    
+            text-decoration: underline;
+    
+            text-decoration-style: solid;
+    
+        }
+
+    }
+
+    li {
+
+        @include inline-flex;
+
+        &:last-child a {
+
+            padding-right: 0;
+
+        }
+
+    }
+
+}

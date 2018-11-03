@@ -1,0 +1,20 @@
+// Palette
+
+$primary: #2f3638;
+$warning: #cd3b3f;
+$success: #2de7a8;
+
+// Shades
+
+$shade-dark: lighten($primary, 25%);
+$shade-medium: lighten($primary, 50%);
+$shade-light:  lighten($primary, 75%);
+
+// Weights
+
+$normal: 400;
+$bold: 700;
+
+// Dimensions
+
+$max-width: 840;

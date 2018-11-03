@@ -1,1 +1,128 @@
-/* You can add global styles to this file, and also import other style files */
+@import './app/partials/reset';
+@import './app/partials/fonts';
+@import './app/partials/variables';
+@import './app/partials/extends';
+
+body {
+
+    @extend %monospace;
+
+    font-size: 14px;
+
+    font-weight: $normal;
+
+    margin: 0 auto;
+
+    max-width: #{$max-width}px;
+
+    padding: 0.5em 1em;
+
+}
+
+a {
+
+    color: $primary;
+
+    text-decoration-style: dotted;
+
+    @extend %link;
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+
+    font-weight: $bold;
+
+}
+
+h1 {
+
+    font-size: 1.25em;
+
+    text-transform: uppercase;
+
+}
+
+h2 {
+
+    font-size: 1.75em;
+
+}
+
+h3, h4 {
+
+    font-size: 1.25em;
+
+}
+
+hr {
+
+    margin: 0.5em auto;
+
+    border-width: 0;
+
+    border-bottom: 2px solid $primary;
+
+}
+
+
+// TODO: REMOVE BELOW
+
+p {
+
+    &.primary {
+
+        background-color: $primary;
+
+        padding: 0.5em;
+
+        color: white;
+
+    }
+    &.warning {
+
+        background-color: $warning;
+
+        padding: 0.5em;
+
+        color: white;
+
+    }
+    &.success {
+
+        background-color: $success;
+
+        padding: 0.5em;
+
+        color: white;
+
+    }
+    &.shade-dark {
+
+        background-color: $shade-dark;
+
+        padding: 0.5em;
+
+        color: white;
+
+    }
+    &.shade-medium {
+
+        background-color: $shade-medium;
+
+        padding: 0.5em;
+
+        color: white;
+
+    }
+    &.shade-light {
+
+        background-color: $shade-light;
+
+        padding: 0.5em;
+
+        color: white;
+
+    }
+
+}
