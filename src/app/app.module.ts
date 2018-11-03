@@ -28,6 +28,10 @@ import { ContentComponent } from './components/layout/content/content.component'
 import { CardComponent } from './components/layout/card/card.component';
 import { NavigationComponent } from './components/layout/navigation/navigation.component';
 
+// Custom
+
+import { MarkdownModule } from 'ngx-markdown';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,13 +49,14 @@ import { NavigationComponent } from './components/layout/navigation/navigation.c
     NoticeComponent,
     ContentComponent,
     CardComponent,
-    NavigationComponent
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MarkdownModule.forRoot(),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
