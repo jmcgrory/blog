@@ -1,3 +1,15 @@
-<p>
-  card works!
-</p>
+<div class="card">
+
+  <a href="card.link" title="This is a card.">
+
+    <image-component></image-component>
+
+    <h3>{{ card.title }}</h3>
+
+    <time>{{ card.createdAt }}</time>
+
+    <p *ngIf="card.text">{{ card.text }}</p>
+
+  </a>
+
+</div>

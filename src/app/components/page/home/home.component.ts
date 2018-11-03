@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CardModel } from '../../../models';
 
 @Component({
   selector: 'home-component',
@@ -6,6 +7,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
+  lol = () => {
+
+    return {
+
+      title: 'placeholder',
+
+      createdAt: '2008-09-15T15:53:00',
+
+      link: 'http://localhost:4200',
+
+      text: 'Oh boy!'
+
+    }
+
+  }
+
+  featured: CardModel[] = [
+
+    new CardModel(this.lol()),
+
+    new CardModel(this.lol()),
+
+    new CardModel(this.lol()),
+
+    new CardModel(this.lol()),
+
+  ];
 
   content: string = `
   

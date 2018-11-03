@@ -2,7 +2,6 @@ import Model from './Model';
 import { TagModel } from '.';
 import { Property } from './Properties';
 
-
 class CardModel extends Model {
 
     title: string;
@@ -14,6 +13,12 @@ class CardModel extends Model {
     image: string;
 
     tags: TagModel[];
+
+    content: any[];
+
+    metaTitle: string;
+
+    metaDescription: string;
 
     public static type: string = 'card';
 
@@ -28,6 +33,10 @@ class CardModel extends Model {
         ['image', Property],
 
         ['tags', Property],
+
+        ['metaTitle', Property],
+
+        ['metaDescription', Property],
 
     ]);
 

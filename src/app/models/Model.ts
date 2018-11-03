@@ -27,7 +27,7 @@ abstract class Model {
 
             if (properties.has(key)) {
 
-                const Property = properties.get('key');
+                const Property = properties.get(key);
 
                 this[key] = new Property(value);
 

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CardModel } from '../../../models';
 
 @Component({
   selector: 'cards-component',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardsComponent implements OnInit {
 
-  constructor() { }
+  @Input() cards: CardModel[];
+
+  constructor() {
+
+    console.log(this.cards);
+
+  }
 
   ngOnInit() {
+
+    console.log(this.cards);
+
   }
 
 }
