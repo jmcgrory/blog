@@ -15,7 +15,7 @@ class NoticeModel extends Model {
 
     public static type: string = 'notice';
 
-    protected assignableProperties = (): Map<string, any> => new Map([
+    protected assignableProperties = (): Map<string, Function> => new Map([
 
         ['title', Property],
 

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GithubService } from 'src/app/services/github/github.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'about-component',
@@ -7,6 +8,8 @@ import { GithubService } from 'src/app/services/github/github.service';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
+
+  subscription: Subscription;
 
   content: string = `### Bonjour!`;
 
@@ -16,11 +19,17 @@ export class AboutComponent implements OnInit {
 
   ngOnInit() {
 
-    const test = this.githubService.getGit().subscribe((data) => {
+    this.subscription = this.githubService.getGit().subscribe((data) => {
 
       console.log(data);
 
     });
+
+  }
+
+  ngOnDestroy() {
+
+    this.subscription.unsubscribe();
 
   }
 

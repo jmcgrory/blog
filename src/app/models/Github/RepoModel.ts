@@ -13,9 +13,11 @@ class ActorModel extends Model {
 
     public avatarUrl: string;
 
-    public static type: string = 'gitActor';
+    public static type: string = 'repo';
 
-    protected assignableProperties = (): Map<string, any> => new Map([
+    protected convertCase: boolean = true;
+
+    protected assignableProperties = (): Map<string, Function> => new Map([
 
         ['login', Property],
 

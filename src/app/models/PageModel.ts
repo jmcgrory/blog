@@ -15,7 +15,7 @@ class PageModel extends Model {
 
     public static type: string = 'page';
 
-    protected assignableProperties = (): Map<string, any> => new Map([
+    protected assignableProperties = (): Map<string, Function> => new Map([
 
         ['title', Property],
 

@@ -11,6 +11,8 @@ abstract class Model {
 
     public deletedAt: Moment;
 
+    protected convertCase: boolean = false;
+
     public static type: string;
 
     constructor(data: any) {
@@ -19,7 +21,6 @@ abstract class Model {
 
     }
 
-    // TODO: Needs to be from snake_case to camelCase
     public fromData = (data: any): this => {
 
         const properties: Map<string, any> = this.getProperties();
@@ -40,7 +41,7 @@ abstract class Model {
 
     };
 
-    protected defaultProperties = (): Map<string, any> => new Map([
+    protected defaultProperties = (): Map<string, Function> => new Map([
 
         ['id', Property],
 
@@ -52,7 +53,7 @@ abstract class Model {
 
     ]);
 
-    protected assignableProperties = (): Map<string, any> => new Map();
+    protected assignableProperties = (): Map<string, Function> => new Map();
 
     protected getProperties = (): Map<string, any> => new Map([
 

@@ -14,9 +14,11 @@ class EventModel extends Model {
 
     public payload: object;
 
-    public static type: string = 'gitEvent';
+    public static type: string = 'event';
 
-    protected assignableProperties = (): Map<string, any> => new Map([
+    protected convertCase: boolean = true;
+
+    protected assignableProperties = (): Map<string, Function> => new Map([
 
         ['type', Property],
 

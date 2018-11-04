@@ -22,7 +22,7 @@ class CardModel extends Model {
 
     public static type: string = 'card';
 
-    protected assignableProperties = (): Map<string, any> => new Map([
+    protected assignableProperties = (): Map<string, Function> => new Map([
 
         ['title', Property],
 
