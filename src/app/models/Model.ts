@@ -27,11 +27,13 @@ abstract class Model {
 
         Object.entries(data).forEach(([key, value]) => {
 
-            if (properties.has(key)) {
+            const newKey = this.convertCase ? this.snakeToCamelCase(key) : key;
 
-                const Property = properties.get(key);
+            if (properties.has(newKey)) {
 
-                this[key] = new Property(value);
+                const Property = properties.get(newKey);
+
+                this[newKey] = new Property(value);
 
             }
 
@@ -40,6 +42,18 @@ abstract class Model {
         return this;
 
     };
+
+    protected snakeToCamelCase = (string: string): string => {
+
+        if (!string.includes('_')) return string;
+
+        return string.split('_').map((segment, i) => {
+
+            return i === 0 ? segment : `${segment[0].toUpperCase}${segment.substring(1)}`;
+
+        }).join();
+
+    }
 
     protected defaultProperties = (): Map<string, Function> => new Map([
 
