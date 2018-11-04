@@ -13,7 +13,15 @@ class PageModel extends Model {
 
     metaDescription: string;
 
-    public static type: string = 'page';
+    public static modelName: string = 'page';
+
+    constructor(data: object) {
+
+        super(data);
+
+        this.fromData(data);
+
+    }
 
     protected assignableProperties = (): Map<string, Function> => new Map([
 

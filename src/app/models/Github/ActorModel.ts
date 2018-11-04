@@ -7,9 +7,17 @@ class ActorModel extends Model {
 
     public url: string;
 
-    public static type: string = 'actor';
+    public static modelName: string = 'actor';
 
     protected convertCase: boolean = true;
+
+    constructor(data: object) {
+
+        super(data);
+
+        this.fromData(data);
+
+    }
 
     protected assignableProperties = (): Map<string, Function> => new Map([
 

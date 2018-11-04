@@ -1,7 +1,7 @@
 import Model from "../Model";
 import { Property } from '../Properties';
 
-import ActorModel from './RepoModel';
+import ActorModel from './ActorModel';
 import RepoModel from './RepoModel';
 
 class EventModel extends Model {
@@ -14,9 +14,17 @@ class EventModel extends Model {
 
     public payload: object;
 
-    public static type: string = 'event';
+    public static modelName: string = 'event';
 
     protected convertCase: boolean = true;
+
+    constructor(data: object) {
+
+        super(data);
+
+        this.fromData(data);
+
+    }
 
     protected assignableProperties = (): Map<string, Function> => new Map([
 

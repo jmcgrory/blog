@@ -13,7 +13,7 @@ abstract class Model {
 
     protected convertCase: boolean = false;
 
-    public static type: string;
+    public static modelName: string;
 
     constructor(data: any) {
 

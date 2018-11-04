@@ -13,7 +13,15 @@ class NoticeModel extends Model {
 
     category: 'error' | 'information' | 'success';
 
-    public static type: string = 'notice';
+    public static modelName: string = 'notice';
+
+    constructor(data: object) {
+
+        super(data);
+
+        this.fromData(data);
+
+    }
 
     protected assignableProperties = (): Map<string, Function> => new Map([
 

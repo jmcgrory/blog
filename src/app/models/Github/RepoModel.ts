@@ -13,9 +13,17 @@ class ActorModel extends Model {
 
     public avatarUrl: string;
 
-    public static type: string = 'repo';
+    public static modelName: string = 'repo';
 
     protected convertCase: boolean = true;
+
+    constructor(data: object) {
+
+        super(data);
+
+        this.fromData(data);
+
+    }
 
     protected assignableProperties = (): Map<string, Function> => new Map([
 

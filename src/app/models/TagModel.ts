@@ -9,7 +9,15 @@ class TagModel extends Model {
 
     icon: string;
 
-    public static type: string = 'tag';
+    public static modelName: string = 'tag';
+
+    constructor(data: object) {
+
+        super(data);
+
+        this.fromData(data);
+
+    }
 
     protected defaultProperties = (): Map<string, any> => new Map([
 

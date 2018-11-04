@@ -14,7 +14,15 @@ class CardModel extends Model {
 
     public tags: TagModel[];
 
-    public static type: string = 'card';
+    public static modelName: string = 'card';
+
+    constructor(data: object) {
+
+        super(data);
+
+        this.fromData(data);
+
+    }
 
     protected assignableProperties = (): Map<string, Function> => new Map([
 

@@ -10,16 +10,6 @@ export class CardsComponent implements OnInit {
 
   @Input() cards: CardModel[];
 
-  constructor() {
-
-    console.log(this.cards);
-
-  }
-
-  ngOnInit() {
-
-    console.log(this.cards);
-
-  }
+  ngOnInit() { }
 
 }

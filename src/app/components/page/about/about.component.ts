@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GithubService } from 'src/app/services/github/github.service';
 import { Subscription } from 'rxjs';
 
+import EventModel from '../../../models/Github/EventModel';
+
 @Component({
   selector: 'about-component',
   templateUrl: './about.component.html',
@@ -13,6 +15,8 @@ export class AboutComponent implements OnInit {
 
   content: string = `### Bonjour!`;
 
+  gitEvents: EventModel[];
+
   constructor(
     private githubService: GithubService
   ) { }
@@ -21,7 +25,9 @@ export class AboutComponent implements OnInit {
 
     this.subscription = this.githubService.getGit().subscribe((data) => {
 
-      console.log(data);
+      this.gitEvents = data.map((e) => new EventModel(e));
+
+      console.log(this.gitEvents);
 
     });
 
