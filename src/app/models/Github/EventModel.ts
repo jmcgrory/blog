@@ -23,7 +23,7 @@ class EventModel extends Model {
 
     }
 
-    protected assignableProperties = (): Map<string, Function> => new Map([
+    protected assignableProperties = (): Map<string, any> => new Map([
 
         ['type', Property],
 

@@ -3,6 +3,13 @@ import { Moment } from 'moment';
 
 abstract class Model {
 
+    /**
+     * This is only here because of below
+     * 
+     * @todo Really odd err on here w/ Actor/Repo being called with typeof Property?
+     */
+    public value: any;
+
     public id: number;
 
     public createdAt: Moment;
@@ -27,15 +34,11 @@ abstract class Model {
 
             const newKey = convertCase ? this.snakeToCamelCase(key) : key;
 
-            console.log(newKey);
-
             if (properties.has(newKey)) {
 
-                console.log('EXISTS IN MODEL!');
+                const Constructor = properties.get(newKey);
 
-                const Property = properties.get(newKey);
-
-                this[newKey] = new Property(value);
+                this[newKey] = new Constructor(value);
 
             }
 
@@ -53,17 +56,13 @@ abstract class Model {
 
             const appendage = (i > 0) ? `${current[0].toUpperCase()}${current.substring(1)}` : current;
 
-            console.log('SNAKED', `${prev}${appendage}`);
-
             return `${prev}${appendage}`;
 
         });
 
-
-
     }
 
-    protected defaultProperties = (): Map<string, Function> => new Map([
+    protected defaultProperties = (): Map<string, any> => new Map([
 
         ['id', Property],
 
@@ -75,7 +74,7 @@ abstract class Model {
 
     ]);
 
-    protected assignableProperties = (): Map<string, Function> => new Map();
+    protected assignableProperties = (): Map<string, any> => new Map();
 
     protected getProperties = (): Map<string, any> => new Map([
 

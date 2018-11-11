@@ -30,7 +30,7 @@ class CardModel extends Model {
 
     }
 
-    protected assignableProperties = (): Map<string, Function> => new Map([
+    protected assignableProperties = (): Map<string, any> => new Map([
 
         ['title', Property],
 

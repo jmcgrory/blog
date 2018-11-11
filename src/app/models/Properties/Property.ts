@@ -1,12 +1,12 @@
 class Property {
 
-    value: any;
+    public value: any;
 
     constructor(value: any) {
 
         this.value = value;
 
-        return value;
+        return this;
 
     }
 

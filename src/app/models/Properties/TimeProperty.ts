@@ -3,11 +3,13 @@ import * as moment from 'moment';
 
 class TimeProperty extends PrimitiveProperty {
 
+    public value: any;
+
     constructor(value: any) {
 
         super(value);
 
-        return moment(value);
+        this.value = moment(value);
 
     }
 
