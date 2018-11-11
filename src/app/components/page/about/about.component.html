@@ -5,3 +5,11 @@
 <hr class="subtle" />
 
 <h3>Recent Activity</h3>
+
+<div class="timeline">
+
+    <gitevent-component *ngFor="let event of gitEvents" [event]="event">
+
+    </gitevent-component>
+
+</div>

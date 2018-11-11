@@ -1,0 +1,114 @@
+@import '../../../partials/mixins';
+@import '../../../partials/variables';
+
+%flex-row {
+
+    @include flexbox;
+
+    @include align-items(center);
+
+}
+
+.timeline-event {
+
+    position: relative;
+
+    @extend %flex-row;
+
+}
+
+.roundel {
+
+    height: 0;
+
+    width: 0;
+
+    padding: 0.25em;
+
+    border-radius: 100%;
+
+    border: 0.5em solid currentColor;
+
+}
+
+.timeline-event-datetime {
+
+    color: $shade-medium;
+
+    font-size: 0.75em;
+
+    @include flex-shrink(0);
+
+    @extend %flex-row;
+
+    span {
+
+        text-align: right;
+
+        min-width: 7.5em;
+
+    }
+
+    .roundel {
+
+        color: $shade-light;
+
+        margin: 0.75em 2em;
+
+        &:before, &:after {
+
+            content: ' ';
+
+            display: block;
+
+            position: absolute;
+
+            height: 50%;
+
+            width: 2px;
+
+            margin-left: -1px;
+
+            background: currentColor;
+
+        }
+
+        &:before {
+
+            margin-top: -0.5em;
+            
+            top: 0;
+
+        }
+
+        &:after {
+
+            margin-top: 0.5em;
+
+            top: 50%;
+
+        }
+
+    }
+
+}
+
+.timeline-event-card {
+
+    @extend %flex-row;
+
+    @include flex-grow(1);
+
+}
+
+:host:first-child .roundel:before {
+
+    display: none;
+
+}
+
+:host:last-child .roundel:after {
+
+    display: none;
+
+}

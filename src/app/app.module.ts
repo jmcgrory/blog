@@ -34,6 +34,7 @@ import { NavigationComponent } from './components/layout/navigation/navigation.c
 import { MarkdownModule } from 'ngx-markdown';
 import { CardsComponent } from './components/layout/cards/cards.component';
 import { ImageComponent } from './components/layout/image/image.component';
+import { GiteventComponent } from './components/layout/gitevent/gitevent.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { ImageComponent } from './components/layout/image/image.component';
     NavigationComponent,
     CardsComponent,
     ImageComponent,
+    GiteventComponent,
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,14 @@ class Property {
 
     }
 
+    public toString = (): string => {
+
+        console.log('BASE TOSTRING');
+
+        return `${this.value}`;
+
+    }
+
 }
 
 export default Property;

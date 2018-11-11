@@ -13,6 +13,20 @@ class TimeProperty extends PrimitiveProperty {
 
     }
 
+    public fromNow = (): string => {
+
+        return moment().to(this.value);
+
+    }
+
+    public toString = (): string => {
+
+        console.log('TP TOSTRING');
+
+        return this.value.format('DD');
+
+    }
+
 }
 
 export default TimeProperty;

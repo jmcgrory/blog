@@ -4,9 +4,11 @@ import { Moment } from 'moment';
 abstract class Model {
 
     /**
-     * This is only here because of below
+     * This is only here because of below Odd err on here w/ Actor/RepoModel
      * 
-     * @todo Really odd err on here w/ Actor/Repo being called with typeof Property?
+     * Being called with typeof Property but nowhere is that happening?
+     * 
+     * @todo Requires fix before any expansion of Property
      */
     public value: any;
 
