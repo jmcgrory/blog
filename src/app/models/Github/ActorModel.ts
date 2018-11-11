@@ -3,27 +3,31 @@ import { Property } from '../Properties';
 
 class ActorModel extends Model {
 
-    public name: string;
+    public displayLogin: string;
+
+    public gravatarId: string;
 
     public url: string;
 
-    public static modelName: string = 'actor';
+    public avatarUrl: string;
 
-    protected convertCase: boolean = true;
+    public static modelName: string = 'actor';
 
     constructor(data: object) {
 
         super(data);
 
-        this.fromData(data);
+        this.fromData(data, true);
 
     }
 
     protected assignableProperties = (): Map<string, Function> => new Map([
 
-        ['name', Property],
+        ['displayLogin', Property],
 
         ['url', Property],
+
+        ['avatarUrl', Property],
 
     ]);
 

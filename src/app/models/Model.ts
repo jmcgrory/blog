@@ -11,8 +11,6 @@ abstract class Model {
 
     public deletedAt: Moment;
 
-    protected convertCase: boolean = false;
-
     public static modelName: string;
 
     constructor(data: any) {
@@ -21,15 +19,19 @@ abstract class Model {
 
     }
 
-    public fromData = (data: any): this => {
+    public fromData = (data: any, convertCase: boolean = false): this => {
 
         const properties: Map<string, any> = this.getProperties();
 
         Object.entries(data).forEach(([key, value]) => {
 
-            const newKey = this.convertCase ? this.snakeToCamelCase(key) : key;
+            const newKey = convertCase ? this.snakeToCamelCase(key) : key;
+
+            console.log(newKey);
 
             if (properties.has(newKey)) {
+
+                console.log('EXISTS IN MODEL!');
 
                 const Property = properties.get(newKey);
 
@@ -47,11 +49,17 @@ abstract class Model {
 
         if (!string.includes('_')) return string;
 
-        return string.split('_').map((segment, i) => {
+        return string.split('_').reduce((prev, current, i) => {
 
-            return i === 0 ? segment : `${segment[0].toUpperCase}${segment.substring(1)}`;
+            const appendage = (i > 0) ? `${current[0].toUpperCase()}${current.substring(1)}` : current;
 
-        }).join();
+            console.log('SNAKED', `${prev}${appendage}`);
+
+            return `${prev}${appendage}`;
+
+        });
+
+
 
     }
 
