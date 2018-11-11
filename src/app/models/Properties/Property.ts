@@ -6,8 +6,6 @@ class Property {
 
         this.value = value;
 
-        return this;
-
     }
 
 }

@@ -19,8 +19,6 @@ class ActorModel extends Model {
 
         this.fromData(data, true);
 
-        return this;
-
     }
 
     protected assignableProperties = (): Map<string, any> => new Map([
