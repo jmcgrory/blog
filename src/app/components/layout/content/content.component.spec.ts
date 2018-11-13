@@ -1,6 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ContentComponent } from './content.component';
+import { Component } from '@angular/core';
+
+// Stubs
+
+@Component({ selector: 'markdown', template: '' })
+class MarkdownComponent { }
+
+// Descriptors
 
 describe('ContentComponent', () => {
   let component: ContentComponent;
@@ -8,9 +16,12 @@ describe('ContentComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ContentComponent ]
+      declarations: [
+        ContentComponent,
+        MarkdownComponent,
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,14 +1,14 @@
 <div class="timeline-event">
 
   <time class="timeline-event-datetime">
-    <span>{{event.createdAt.fromNow()}}</span>
+    <span>{{event?.createdAt.fromNow()}}</span>
     <div class="roundel"></div>
   </time>
 
-  <a target="_blank" title="View this {{event.type.value}}" href="https://github.com/{{event.repo.name.value}}" class="timeline-event-card">
+  <a target="_blank" title="View this {{event?.type.value}}" href="https://github.com/{{event?.repo.name.value}}" class="timeline-event-card">
 
-    <span>{{event.type.value}}</span>
-    <span>{{event.repo.name.value}}</span>
+    <span>{{event?.type.value}}</span>
+    <span>{{event?.repo.name.value}}</span>
 
   </a>
 

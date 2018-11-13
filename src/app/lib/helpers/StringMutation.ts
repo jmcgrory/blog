@@ -14,31 +14,37 @@ class StringMutation {
 
         this.setType(
 
-            typeof type !== "undefined" ? type : this.getType()
+            typeof type !== "undefined" ? type : this.findType()
 
         );
 
     }
 
-    private getType = (): Case => {
+    public getType = (): Case => {
 
-        const string = this.original;
+        return this.type;
 
-        const length = string.length;
+    }
+
+    private findType = (): Case => {
+
+        const str = this.original;
+
+        const length = str.length;
 
         if (length === 0) return 'none';
 
-        if (string.includes('-')) {
+        if (str.includes('-')) {
 
             return 'kebab';
 
-        } else if (string.includes(' ')) {
+        } else if (str.includes(' ')) {
 
             return 'title';
 
-        } else if (string.includes('_')) {
+        } else if (str.includes('_')) {
 
-            if (this.isUpperCase(string)) {
+            if (this.isUpperCase(str)) {
 
                 return 'constant';
 
@@ -50,19 +56,11 @@ class StringMutation {
 
         } else {
 
-            // Pascal or Camel...
-
-            if (this.isUpperCase(string.charAt(0))) {
-
-                return 'pascal';
-
-            } else {
-
-                return 'camel';
-
-            }
+            return this.isUpperCase(str.charAt(0)) ? 'pascal' : 'camel';
 
         }
+
+        return 'none';
 
     }
 

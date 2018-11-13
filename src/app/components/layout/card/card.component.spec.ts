@@ -1,6 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CardComponent } from './card.component';
+import { Component } from '@angular/core';
+
+// Stubs
+
+@Component({ selector: 'image-component', template: '' })
+class ImageComponent { }
 
 describe('CardComponent', () => {
   let component: CardComponent;
@@ -8,9 +14,11 @@ describe('CardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CardComponent ]
-    })
-    .compileComponents();
+      declarations: [
+        CardComponent,
+        ImageComponent,
+      ]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
