@@ -3,9 +3,9 @@ import { Property } from '../Properties';
 
 class RepoModel extends Model {
 
-    public name: string;
+    public name: Property;
 
-    public url: string;
+    public url: Property;
 
     public static modelName: string = 'repo';
 

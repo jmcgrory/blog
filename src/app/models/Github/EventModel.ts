@@ -2,16 +2,18 @@ import Model from "../Model";
 import { Property } from '../Properties';
 import ActorModel from './ActorModel';
 import RepoModel from './RepoModel';
+// const changeCase = require('change-case')
+import * as changeCase from 'change-case';
 
 class EventModel extends Model {
 
-    public type: string;
+    public type: Property;
 
     public actor: ActorModel;
 
     public repo: RepoModel;
 
-    public payload: object;
+    public payload: Property;
 
     public static modelName: string = 'event';
 
@@ -20,6 +22,12 @@ class EventModel extends Model {
         super(data);
 
         this.fromData(data, true);
+
+    }
+
+    public getType = (): string => {
+
+        return changeCase.title(this.type.value);
 
     }
 

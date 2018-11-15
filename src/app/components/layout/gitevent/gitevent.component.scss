@@ -53,7 +53,7 @@
 
         color: $shade-light;
 
-        margin: 0.75em 2em;
+        margin: 0 2em;
 
         &:before, &:after {
 
@@ -95,9 +95,21 @@
 
 .timeline-event-card {
 
+    text-decoration: none;
+
+    padding: 0.5em 0;
+
     @extend %flex-row;
 
     @include flex-grow(1);
+
+    @include justify-content(space-between);
+
+    &:hover {
+
+        text-decoration: underline;
+
+    }
 
 }
 

@@ -3,13 +3,11 @@ import { Property } from '../Properties';
 
 class ActorModel extends Model {
 
-    public displayLogin: string;
+    public displayLogin: Property;
 
-    public gravatarId: string;
+    public url: Property;
 
-    public url: string;
-
-    public avatarUrl: string;
+    public avatarUrl: Property;
 
     public static modelName: string = 'actor';
 
