@@ -13,13 +13,9 @@ abstract class Model {
     public value: any;
 
     public id: number;
-
     public createdAt: Moment;
-
     public updatedAt: Moment;
-
     public deletedAt: Moment;
-
     public static modelName: string;
 
     constructor(data: any) {
