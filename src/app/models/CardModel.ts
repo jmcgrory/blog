@@ -12,25 +12,16 @@ class CardModel extends Model {
     protected modelName: string = 'card';
 
     constructor(data: object) {
-
         super(data);
-
         this.fromData(data);
-
     }
 
     protected assignableProperties = (): Map<string, any> => new Map([
-
         ['title', Property],
-
         ['blurb', Property],
-
         ['link', Property],
-
         ['image', Property],
-
-        ['tags', Property],
-
+        ['tags', TagModel],
     ]);
 
 }

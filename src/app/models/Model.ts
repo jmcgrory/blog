@@ -12,7 +12,7 @@ abstract class Model {
      */
     public value: any;
 
-    public id: number;
+    public id: Property;
     public createdAt: Moment;
     public updatedAt: Moment;
     public deletedAt: Moment;
@@ -58,6 +58,10 @@ abstract class Model {
         ...this.defaultProperties(),
         ...this.assignableProperties(),
     ]);
+
+    public toObject = (): object => {
+        return {};
+    }
 
 }
 

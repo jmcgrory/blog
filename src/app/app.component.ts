@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import APIStorage from './application/APIStorage';
+import CardModel from './models/ArticleModel';
 
 @Component({
   selector: 'root-component',
@@ -16,7 +17,13 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     console.log(APIStorage);
-    new APIStorage(window.localStorage);
+    APIStorage.setModel(
+      'category',
+      new CardModel({
+        title: 'hello',
+        id: Math.round(Math.random() * 100)
+      })
+    )
   }
 
 }
