@@ -7,7 +7,7 @@ class RepoModel extends Model {
 
     public url: Property;
 
-    public static modelName: string = 'repo';
+    protected modelName: string = 'repo';
 
     constructor(data: object) {
 

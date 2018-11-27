@@ -16,73 +16,48 @@ abstract class Model {
     public createdAt: Moment;
     public updatedAt: Moment;
     public deletedAt: Moment;
-    public static modelName: string;
+    protected abstract modelName: string;
 
-    constructor(data: any) {
+    constructor(data: any) { }
 
-        this.fromData(data);
-
+    public getModelName = (): string => {
+        return `${this.modelName}`;
     }
 
     public fromData = (data: any, convertCase: boolean = false): this => {
-
         const properties: Map<string, any> = this.getProperties();
-
         Object.entries(data).forEach(([key, value]) => {
-
             const newKey = convertCase ? this.snakeToCamelCase(key) : key;
-
             if (properties.has(newKey)) {
-
                 const Constructor = properties.get(newKey);
-
                 this[newKey] = new Constructor(value);
-
             }
-
         });
-
         return this;
-
     };
 
     protected snakeToCamelCase = (string: string): string => {
-
         if (!string.includes('_')) return string;
-
         return string.split('_').reduce((prev, current, i) => {
-
             const appendage = (i > 0) ? `${current[0].toUpperCase()}${current.substring(1)}` : current;
-
             return `${prev}${appendage}`;
-
         });
 
     }
 
     protected defaultProperties = (): Map<string, any> => new Map([
-
         ['id', Property],
-
         ['createdAt', TimeProperty],
-
         ['updatedAt', TimeProperty],
-
         ['deletedAt', TimeProperty],
-
     ]);
 
     protected assignableProperties = (): Map<string, any> => new Map();
 
     protected getProperties = (): Map<string, any> => new Map([
-
         ...this.defaultProperties(),
-
         ...this.assignableProperties(),
-
     ]);
-
-
 
 }
 

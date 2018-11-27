@@ -10,7 +10,7 @@ class NoticeModel extends Model {
     code: number;
     actions: any[]; // ButtonModel?
     category: Level;
-    public static modelName: string = 'notice';
+    protected modelName: string = 'notice';
 
     constructor(data: object) {
         super(data);

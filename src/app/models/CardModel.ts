@@ -5,16 +5,11 @@ import { Property } from './Properties';
 class CardModel extends Model {
 
     public title: string;
-
     public blurb: string;
-
     public link: string;
-
     public image: string;
-
     public tags: TagModel[];
-
-    public static modelName: string = 'card';
+    protected modelName: string = 'card';
 
     constructor(data: object) {
 

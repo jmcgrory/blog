@@ -21,8 +21,6 @@ class TimeProperty extends PrimitiveProperty {
 
     public toString = (): string => {
 
-        console.log('TP TOSTRING');
-
         return this.value.format('DD');
 
     }

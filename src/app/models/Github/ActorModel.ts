@@ -9,7 +9,7 @@ class ActorModel extends Model {
 
     public avatarUrl: Property;
 
-    public static modelName: string = 'actor';
+    protected modelName: string = 'actor';
 
     constructor(data: object) {
 

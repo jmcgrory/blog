@@ -15,7 +15,7 @@ class EventModel extends Model {
 
     public payload: Property;
 
-    public static modelName: string = 'event';
+    protected modelName: string = 'event';
 
     constructor(data: object) {
 

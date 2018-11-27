@@ -9,7 +9,7 @@ class TagModel extends Model {
 
     icon: string;
 
-    public static modelName: string = 'tag';
+    protected modelName: string = 'tag';
 
     constructor(data: object) {
 

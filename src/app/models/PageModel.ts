@@ -4,16 +4,11 @@ import { Property } from './Properties';
 class PageModel extends Model {
 
     title: string;
-
     content: any[];
-
     image: string;
-
     metaTitle: string;
-
     metaDescription: string;
-
-    public static modelName: string = 'page';
+    protected modelName: string = 'page';
 
     constructor(data: object) {
 
