@@ -10,25 +10,20 @@ class NoticeModel extends Model {
     code: number;
     actions: any[]; // ButtonModel?
     category: Level;
-    protected modelName: string = 'notice';
 
     constructor(data: object) {
         super(data);
         this.fromData(data);
     }
 
+    public static getStaticName = (): string => 'notice';
+
     protected assignableProperties = (): Map<string, any> => new Map([
-
         ['title', Property],
-
         ['description', Property],
-
         ['code', Property],
-
         ['actions', Property],
-
         ['category', Property],
-
     ]);
 
     /** @todo */

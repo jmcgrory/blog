@@ -9,12 +9,13 @@ class CardModel extends Model {
     public link: string;
     public image: string;
     public tags: TagModel[];
-    protected modelName: string = 'card';
 
     constructor(data: object) {
         super(data);
         this.fromData(data);
     }
+
+    public static getStaticName = (): string => 'card';
 
     protected assignableProperties = (): Map<string, any> => new Map([
         ['title', Property],

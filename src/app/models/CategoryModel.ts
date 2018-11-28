@@ -6,12 +6,13 @@ class CategoryModel extends Model {
 
     public name: string;
     public description: string;
-    protected modelName: string = 'category';
 
     constructor(data: object) {
         super(data);
         this.fromData(data);
     }
+
+    public static getStaticName = (): string => 'category';
 
     protected assignableProperties = (): Map<string, any> => new Map([
         ['name', Property],

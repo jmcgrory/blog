@@ -4,29 +4,20 @@ import { Property } from '../Properties';
 class ActorModel extends Model {
 
     public displayLogin: Property;
-
     public url: Property;
-
     public avatarUrl: Property;
 
-    protected modelName: string = 'actor';
-
     constructor(data: object) {
-
         super(data);
-
         this.fromData(data, true);
-
     }
 
+    public static getStaticName = (): string => 'actor';
+
     protected assignableProperties = (): Map<string, any> => new Map([
-
         ['displayLogin', Property],
-
         ['url', Property],
-
         ['avatarUrl', Property],
-
     ]);
 
 }

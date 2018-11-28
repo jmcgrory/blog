@@ -2,7 +2,7 @@ import Model from './Model';
 import { TagModel, CategoryModel } from '.';
 import { Property } from './Properties';
 
-class CardModel extends Model {
+class ArticleModel extends Model {
 
     title: string;
     blurb: string;
@@ -14,12 +14,12 @@ class CardModel extends Model {
     metaTitle: string;
     metaDescription: string;
 
-    protected modelName: string = 'card';
-
     constructor(data: object) {
         super(data);
         this.fromData(data);
     }
+
+    public static getStaticName = (): string => 'article';
 
     protected assignableProperties = (): Map<string, any> => new Map([
         ['title', Property],
@@ -33,4 +33,4 @@ class CardModel extends Model {
 
 }
 
-export default CardModel;
+export default ArticleModel;

@@ -4,29 +4,20 @@ import { Property } from './Properties';
 class TagModel extends Model {
 
     name: string;
-
     description: string;
-
     icon: string;
 
-    protected modelName: string = 'tag';
-
     constructor(data: object) {
-
         super(data);
-
         this.fromData(data);
-
     }
 
-    protected defaultProperties = (): Map<string, any> => new Map([
+    public static getStaticName = (): string => 'tag';
 
+    protected assignableProperties = (): Map<string, any> => new Map([
         ['name', Property],
-
         ['description', Property],
-
         ['icon', Property],
-
     ]);
 
 }

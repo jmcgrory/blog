@@ -8,12 +8,13 @@ class PageModel extends Model {
     image: string;
     metaTitle: string;
     metaDescription: string;
-    protected modelName: string = 'page';
 
     constructor(data: object) {
         super(data);
         this.fromData(data);
     }
+
+    public static getStaticName = (): string => 'page';
 
     protected assignableProperties = (): Map<string, any> => new Map([
         ['title', Property],

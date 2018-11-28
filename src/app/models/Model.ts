@@ -16,12 +16,15 @@ abstract class Model {
     public createdAt: Moment;
     public updatedAt: Moment;
     public deletedAt: Moment;
-    protected abstract modelName: string;
 
     constructor(data: any) { }
 
+    public static getStaticName = (): string => 'model';
+
     public getModelName = (): string => {
-        return `${this.modelName}`;
+        // TS requires 'any' type to access constr methods
+        const constructor: any = this.constructor;
+        return `${constructor.getStaticName()}`;
     }
 
     public fromData = (data: any, convertCase: boolean = false): this => {
@@ -60,7 +63,18 @@ abstract class Model {
     ]);
 
     public toObject = (): object => {
-        return {};
+        let object = {};
+        [...this.getProperties().keys()].forEach(
+            (key) => {
+                const propertyValue = this[key];
+                if (propertyValue instanceof Model) {
+                    object[key] = propertyValue.id;
+                } else if (propertyValue instanceof Property) {
+                    object[key] = propertyValue.value;
+                }
+            }
+        );
+        return object;
     }
 
 }
