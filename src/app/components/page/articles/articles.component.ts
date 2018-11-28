@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { CategoryService } from '../../../services/category/category.service';
+import { APIService } from '../../../services/API/API.service';
 import { CategoryModel } from 'src/app/models';
 
 @Component({
@@ -14,11 +14,11 @@ export class ArticlesComponent implements OnInit {
   subscription: Subscription;
 
   constructor(
-    private categoryService: CategoryService
+    private service: APIService
   ) { }
 
   ngOnInit() {
-    this.subscription = this.categoryService.getCategories().subscribe(
+    this.subscription = this.service.getCategories().subscribe(
       (data) => {
         this.categories = data.map(
           (category) => new CategoryModel(category)
