@@ -4,31 +4,31 @@ import { APIService } from '../../../services/API/API.service';
 import { CategoryModel } from 'src/app/models';
 
 @Component({
-  selector: 'articles-component',
-  templateUrl: './articles.component.html',
-  styleUrls: ['./articles.component.scss']
+    selector: 'articles-component',
+    templateUrl: './articles.component.html',
+    styleUrls: ['./articles.component.scss']
 })
 export class ArticlesComponent implements OnInit {
 
-  categories: CategoryModel[];
-  subscription: Subscription;
+    categories: CategoryModel[];
+    subscription: Subscription;
 
-  constructor(
-    private service: APIService
-  ) { }
+    constructor(
+        private service: APIService
+    ) { }
 
-  ngOnInit() {
-    this.subscription = this.service.getCategories().subscribe(
-      (data) => {
-        this.categories = data.map(
-          (category) => new CategoryModel(category)
+    ngOnInit() {
+        this.subscription = this.service.getCategories().subscribe(
+            (data) => {
+                this.categories = data.map(
+                    (category) => new CategoryModel(category)
+                );
+            }
         );
-      }
-    );
-  }
+    }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+    }
 
 }

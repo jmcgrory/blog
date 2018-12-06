@@ -1,0 +1,5 @@
+<ol *ngIf="notices.length">
+  <li *ngFor="let notice of notices">
+    <notice-component [notice]="notice"></notice-component>
+  </li>
+</ol>

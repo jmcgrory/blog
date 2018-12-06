@@ -24,17 +24,18 @@ import { EditComponent } from './components/page/edit/edit.component';
 // Layout
 
 import { ButtonComponent } from './components/layout/button/button.component';
-import { NoticeComponent } from './components/layout/notice/notice.component';
 import { ContentComponent } from './components/layout/content/content.component';
 import { CardComponent } from './components/layout/card/card.component';
 import { NavigationComponent } from './components/layout/navigation/navigation.component';
+import { CardsComponent } from './components/layout/cards/cards.component';
+import { ImageComponent } from './components/layout/image/image.component';
+import { GiteventComponent } from './components/layout/gitevent/gitevent.component';
+import { NoticesComponent } from './components/layout/notices/notices.component';
+import { NoticeComponent } from './components/layout/notice/notice.component';
 
 // Custom
 
 import { MarkdownModule } from 'ngx-markdown';
-import { CardsComponent } from './components/layout/cards/cards.component';
-import { ImageComponent } from './components/layout/image/image.component';
-import { GiteventComponent } from './components/layout/gitevent/gitevent.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { GiteventComponent } from './components/layout/gitevent/gitevent.compone
     CardsComponent,
     ImageComponent,
     GiteventComponent,
+    NoticesComponent,
   ],
   imports: [
     BrowserModule,

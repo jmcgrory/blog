@@ -138,3 +138,11 @@
   -ms-align-self: $align;
   align-self: $align;
 }
+
+@mixin transition($args: 200ms ease) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}

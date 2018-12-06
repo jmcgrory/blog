@@ -1,5 +1,5 @@
 import Model from './Model';
-import { TagModel } from '.';
+import TagModel from './TagModel';
 import { Property } from './Properties';
 
 class CardModel extends Model {
