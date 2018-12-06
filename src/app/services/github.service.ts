@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { GIT_URI } from '../../config';
+import { GIT_URI } from '../config';
 
 @Injectable({
     providedIn: 'root'

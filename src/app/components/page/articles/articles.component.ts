@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { APIService } from '../../../services/API/API.service';
+import { APIService } from '../../../services/API.service';
 import { CategoryModel } from 'src/app/models';
 
 @Component({

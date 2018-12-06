@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { APIService } from './services/API/API.service';
+import { APIService } from './services/API.service';
 import { Notice } from './models';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { GithubService } from 'src/app/services/github/github.service';
+import { GithubService } from 'src/app/services/github.service';
 import { Subscription } from 'rxjs';
 import EventModel from '../../../models/Github/EventModel';
 
