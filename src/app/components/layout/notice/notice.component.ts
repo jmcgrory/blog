@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Notice } from 'src/app/models';
 
 @Component({
@@ -8,13 +8,13 @@ import { Notice } from 'src/app/models';
 })
 export class NoticeComponent {
 
+  @Output() dismiss: EventEmitter<number> = new EventEmitter<number>();
   @Input() notice: Notice;
 
   constructor() { }
 
-  public dismiss = (): boolean => {
-    console.log("dismiss", this.notice);
-    return true;
+  public dismissNotice(event, index: number) {
+    this.dismiss.emit(index);
   }
 
 }

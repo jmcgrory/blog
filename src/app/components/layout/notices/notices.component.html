@@ -1,5 +1,6 @@
-<ol *ngIf="notices.length">
-  <li *ngFor="let notice of notices">
-    <notice-component [notice]="notice"></notice-component>
+<ol *ngIf="notices.size">
+  <li *ngFor="let notice of getNotices()">
+    <notice-component [notice]="notice" (dismiss)="dismiss($event)">
+    </notice-component>
   </li>
 </ol>

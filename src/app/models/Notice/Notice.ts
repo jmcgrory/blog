@@ -1,7 +1,8 @@
-type Level = 'error' | 'info' | 'fatal' | 'success' | 'debug';
+import Level from './Level';
 
 class Notice {
 
+    private id: number;
     private message: string;
     private level: Level;
     private code: number;
@@ -20,10 +21,24 @@ class Notice {
         return this;
     }
 
+    public getMessage = (): string => `${this.message}`;
+
     public getClasses = (): string[] => [
         `notice`,
         `${this.level}`,
     ];
+
+    public setActions = (...actions: any): void => {
+        this.actions = [...actions];
+    }
+
+    public setId = (id: number): void => {
+        this.id = id;
+    }
+
+    public getId = (): number => {
+        return this.id;
+    }
 
 }
 

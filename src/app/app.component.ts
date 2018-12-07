@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { APIService } from './services/API.service';
 import { Notice } from './models';
+import { NoticeService } from './services/notice.service';
 
 @Component({
     selector: 'root-component',
@@ -13,7 +14,8 @@ export class AppComponent implements OnInit {
     notices: Notice[] = [];
 
     constructor(
-        private service: APIService
+        private service: APIService,
+        private noticeService: NoticeService
     ) {
         this.year = new Date().getFullYear();
     }
@@ -24,17 +26,8 @@ export class AppComponent implements OnInit {
         this.service.ping().subscribe((data) => {
             console.log(data);
         }, (error) => {
-            this.notices.push(new Notice(error, 'error'));
+            this.noticeService.add(new Notice(error, 'error'));
         });
-
-        this.notices.push(
-            new Notice("Something has broken unfortunately!", "error"),
-            new Notice("Well done, youve played yourself...", "success"),
-            new Notice("Just to inform you that we're closing for Christmas.", "info"),
-            new Notice("If you'd like to find a bug, you're a weirdo.", "debug"),
-            new Notice("Again, we are closed Sir.", "info"),
-            new Notice("The entire application has destroyed reality.", "fatal")
-        );
 
     }
 
