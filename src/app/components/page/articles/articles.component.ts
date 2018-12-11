@@ -8,7 +8,7 @@ import { CategoryModel } from 'src/app/models';
     templateUrl: './articles.component.html',
     styleUrls: ['./articles.component.scss']
 })
-export class ArticlesComponent implements OnInit {
+export class ArticlesComponent implements OnInit, OnDestroy {
 
     categories: CategoryModel[];
     subscription: Subscription;

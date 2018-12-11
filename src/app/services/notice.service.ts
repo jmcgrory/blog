@@ -11,7 +11,8 @@ export class NoticeService {
     private source = new BehaviorSubject<Notice>(new Notice('Successful Init', 'success'));
     notice: Observable<Notice> = this.source.asObservable();
 
-    constructor() { }
+    constructor() {
+    }
 
     public add = (notice: Notice): void => {
         this.source.next(notice);

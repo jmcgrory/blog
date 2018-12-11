@@ -50,7 +50,10 @@ export class APIService {
     }
 
     public getIds = () => {
-        // '/ids', 'get', this.getIds
+        return this.http.get<any>(
+            `${this.getUrl()}/getIds`,
+            this.getOptions()
+        ).pipe(catchError(this.handleError));
     }
 
     public getModel = () => {

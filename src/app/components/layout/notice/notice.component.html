@@ -1,7 +1,9 @@
 <div [ngClass]="notice.getClasses()">
-  <span class="notice-level">{{notice.level}}</span>
+  <span class="notice-level">
+    <i class="icon">{{notice.getIcon()}}</i>
+  </span>
   <span class="notice-message">{{notice.message}}</span>
   <ul>
-    <button (click)="dismissNotice($event, notice.getId())"><span>X</span></button>
+    <button (click)="dismissNotice($event, notice.getId())"><span><i class="icon">close</i></span></button>
   </ul>
 </div>
