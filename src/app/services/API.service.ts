@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { API_URI } from '../config';
 import { Notice } from 'src/app/models';
+import APIFilter from '../models/Filter/APIFilter';
 
 type Base = 'article' | 'category' | 'tag' | 'user' | 'page';
 
@@ -13,7 +14,6 @@ type Base = 'article' | 'category' | 'tag' | 'user' | 'page';
 export class APIService {
 
     private url: string = 'http://localhost:3000';
-    private base: Base;
 
     constructor(
         private http: HttpClient
@@ -21,26 +21,24 @@ export class APIService {
 
     private getUrl = (): string => `${this.url}`;
 
-    private getBaseUrl = (): string => `${this.getUrl}/${this.base}`;
-
-    private getOptions = (): object => {
-        return {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json'
-            })
+    private getOptions = (filters: APIFilter = null): object => {
+        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        let params = new HttpParams();
+        if (filters !== null) {
+            [...filters.toMap().entries()].forEach(([key, value]) => {
+                params = params.append(key, value);
+            });
         }
+        return { headers: headers, params }
     }
 
     private handleError = (error: HttpErrorResponse) => {
         let message = 'The application has returned an Error.';
-        console.log(error);
         if (error.error instanceof ErrorEvent) {
             message = error.error.message;
         }
         return throwError(message);
     };
-
-    public setBase = (base: Base): string => this.base = base;
 
     public ping = () => {
         return this.http.get<any>(
@@ -49,10 +47,10 @@ export class APIService {
         ).pipe(catchError(this.handleError));
     }
 
-    public getIds = () => {
+    public getIds = (route: string, filters: APIFilter) => {
         return this.http.get<any>(
-            `${this.getUrl()}/getIds`,
-            this.getOptions()
+            `${this.getUrl()}/${route}/ids`,
+            this.getOptions(filters)
         ).pipe(catchError(this.handleError));
     }
 
