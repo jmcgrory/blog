@@ -39,11 +39,12 @@ export class AuthService {
     }
 
     public authenticateToken = () => {
-        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-        let params = new HttpParams();
         const { username, token } = APIStore.getAuth();
-        params = params.set('token', username);
-        params = params.set('token', token);
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `jwt ${token}`
+        });
+        let params = new HttpParams().set('username', username);
         return this.http.get<any>(
             `${this.getUrl()}/user/token`,
             { headers: headers, params }

@@ -27,17 +27,6 @@ export class APIService {
         return throwError(message);
     };
 
-    public authenticateUser = (user: UserModel) => {
-        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-        let params = new HttpParams();
-        params = params.set('username', user.username.toString());
-        params = params.set('password', user.password.toString());
-        return this.http.get<any>(
-            `${this.getUrl()}/user/authenticate`,
-            { headers: headers, params }
-        )
-    }
-
     public ping = () => {
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         return this.http.get<any>(

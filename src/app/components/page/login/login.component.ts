@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserModel } from 'src/app/models';
 import { AuthService } from 'src/app/services/auth.service';
 import APIStore from '../../../application/APIStore';
@@ -11,7 +12,8 @@ import APIStore from '../../../application/APIStore';
 export class LoginComponent {
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   public user: UserModel = new UserModel({
@@ -23,6 +25,7 @@ export class LoginComponent {
     this.authService.authenticateUser(this.user).subscribe((data) => {
       if (data.token) {
         this.storeUser(data);
+        this.router.navigate(['/dashboard']);
       }
     });
   }
