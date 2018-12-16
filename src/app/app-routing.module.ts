@@ -17,6 +17,9 @@ import { DashboardComponent } from './components/page/dashboard/dashboard.compon
 import { MediaComponent } from './components/page/media/media.component';
 import { EditComponent } from './components/page/edit/edit.component';
 
+// Guards
+import { AuthGuard } from './guards/auth.guard';
+
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'about', component: AboutComponent },
@@ -24,6 +27,21 @@ const routes: Routes = [
   { path: 'articles', component: ArticlesComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: LoginComponent },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        canActivateChild: [AuthGuard],
+        children: [
+          { path: 'media', component: MediaComponent },
+          { path: 'edit/:id', component: EditComponent },
+        ],
+      }
+    ]
+  },
   { path: '**', component: ErrorComponent },
 ];
 

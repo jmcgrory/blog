@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { API_URI } from '../config';
-import { Notice, UserModel } from 'src/app/models';
+import { UserModel } from 'src/app/models';
 import APIFilter from '../models/Filter/APIFilter';
 
 type Base = 'article' | 'category' | 'tag' | 'user' | 'page';
@@ -13,24 +13,11 @@ type Base = 'article' | 'category' | 'tag' | 'user' | 'page';
 })
 export class APIService {
 
-    private url: string = 'http://localhost:3000';
-
     constructor(
         private http: HttpClient
     ) { }
 
-    private getUrl = (): string => `${this.url}`;
-
-    private getOptions = (filters: APIFilter = null): object => {
-        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-        let params = new HttpParams();
-        if (filters !== null) {
-            [...filters.toMap().entries()].forEach(([key, value]) => {
-                params = params.set(key, value);
-            });
-        }
-        return { headers: headers, params }
-    }
+    private getUrl = (): string => `${API_URI}`;
 
     private handleError = (error: HttpErrorResponse) => {
         let message = 'The application has returned an Error.';
@@ -52,16 +39,24 @@ export class APIService {
     }
 
     public ping = () => {
+        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         return this.http.get<any>(
             `${this.getUrl()}/ping`,
-            this.getOptions()
+            { headers: headers }
         ).pipe(catchError(this.handleError));
     }
 
     public getIds = (route: string, filters: APIFilter) => {
+        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        let params = new HttpParams();
+        if (filters !== null) {
+            [...filters.toMap().entries()].forEach(([key, value]) => {
+                params = params.set(key, value);
+            });
+        }
         return this.http.get<any>(
             `${this.getUrl()}/${route}/ids`,
-            this.getOptions(filters)
+            { headers: headers, params }
         ).pipe(catchError(this.handleError));
     }
 
@@ -97,15 +92,6 @@ export class APIService {
 
     public setActive = () => {
         // '/active', 'patch', this.setActive, true
-    }
-
-    public getCategories = (fromMaster: boolean = false): Observable<any[]> => {
-        const headers: HttpHeaders = new HttpHeaders();
-        headers.append('Content-Type', 'application/json');
-        return this.http.get<any[]>(
-            `${API_URI}/category/get`,
-            { headers: headers }
-        );
     }
 
 }

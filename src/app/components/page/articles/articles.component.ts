@@ -18,13 +18,14 @@ export class ArticlesComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit() {
-        this.subscription = this.service.getCategories().subscribe(
+        // Get Ids first...
+        /*this.subscription = this.service.getModels().subscribe(
             (data) => {
                 this.categories = data.map(
                     (category) => new CategoryModel(category)
                 );
             }
-        );
+        );*/
     }
 
     ngOnDestroy() {

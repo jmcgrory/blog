@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UserModel } from 'src/app/models';
-import { APIService } from 'src/app/services/API.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'login-component',
@@ -10,7 +10,7 @@ import { APIService } from 'src/app/services/API.service';
 export class LoginComponent {
 
   constructor(
-    private apiService: APIService
+    private authService: AuthService
   ) { }
 
   public user: UserModel = new UserModel({
@@ -20,7 +20,7 @@ export class LoginComponent {
 
   public authenticateUser = (): void => {
     console.log(this.user);
-    this.apiService.authenticateUser(this.user).subscribe((data) => {
+    this.authService.authenticateUser(this.user).subscribe((data) => {
       console.log(data);
     });
   }
