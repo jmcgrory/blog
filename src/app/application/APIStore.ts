@@ -1,5 +1,10 @@
 import Model from '../models/Model';
 
+interface Auth {
+    username: string,
+    token: string
+}
+
 /**
  * Handles local storing/requesting of API Data
  * @todo needs to handle expirations
@@ -8,6 +13,20 @@ import Model from '../models/Model';
 class APIStore {
 
     private static store: Storage = window.localStorage;
+
+    public static setAuth = (username: string, token: string): void => {
+        APIStore.store.setItem(
+            'auth',
+            JSON.stringify({
+                username: username,
+                token: token
+            })
+        )
+    }
+
+    public static getAuth = (): Auth => {
+        return JSON.parse(APIStore.store.getItem('auth'));
+    }
 
     public static setModel = (
         model: Model

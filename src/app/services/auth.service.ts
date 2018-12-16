@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { API_URI } from '../config';
 import { UserModel } from '../models';
+import APIStore from '../application/APIStore';
 
 type Base = 'article' | 'category' | 'tag' | 'user' | 'page';
 
@@ -40,20 +41,13 @@ export class AuthService {
     public authenticateToken = () => {
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         let params = new HttpParams();
-        params = params.set('token', this.getToken());
-        params = params.set('token', this.getUsername());
+        const { username, token } = APIStore.getAuth();
+        params = params.set('token', username);
+        params = params.set('token', token);
         return this.http.get<any>(
             `${this.getUrl()}/user/token`,
             { headers: headers, params }
         )
-    }
-
-    private getToken = (): string => {
-        return 'TEST';
-    }
-
-    private getUsername = (): string => {
-        return 'root';
     }
 
 }

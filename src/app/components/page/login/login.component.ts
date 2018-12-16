@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserModel } from 'src/app/models';
 import { AuthService } from 'src/app/services/auth.service';
+import APIStore from '../../../application/APIStore';
 
 @Component({
   selector: 'login-component',
@@ -19,10 +20,15 @@ export class LoginComponent {
   });
 
   public authenticateUser = (): void => {
-    console.log(this.user);
     this.authService.authenticateUser(this.user).subscribe((data) => {
-      console.log(data);
+      if (data.token) {
+        this.storeUser(data);
+      }
     });
+  }
+
+  private storeUser = ({ username, token }): void => {
+    APIStore.setAuth(username, token);
   }
 
 }
