@@ -1,10 +1,10 @@
 import Model from "../Model";
-import { Property } from '../Properties';
+import { AnyProperty } from '../Properties';
 
 class RepoModel extends Model {
 
-    public name: Property;
-    public url: Property;
+    public name: AnyProperty;
+    public url: AnyProperty;
 
     constructor(data: object) {
         super(data);
@@ -14,8 +14,8 @@ class RepoModel extends Model {
     public static getStaticName = (): string => 'repo';
 
     protected assignableProperties = (): Map<string, any> => new Map([
-        ['name', Property],
-        ['url', Property],
+        ['name', AnyProperty],
+        ['url', AnyProperty],
     ]);
 
 }

@@ -1,4 +1,5 @@
-import { Property, TimeProperty } from './Properties';
+import { AnyProperty, TimeProperty } from './Properties';
+import Property from './Properties/Property';
 import { Moment } from 'moment';
 
 abstract class Model {
@@ -12,7 +13,7 @@ abstract class Model {
      */
     public value: any;
 
-    public id: Property;
+    public id: AnyProperty;
     public createdAt: Moment;
     public updatedAt: Moment;
     public deletedAt: Moment;
@@ -49,7 +50,7 @@ abstract class Model {
     }
 
     protected defaultProperties = (): Map<string, any> => new Map([
-        ['id', Property],
+        ['id', AnyProperty],
         ['createdAt', TimeProperty],
         ['updatedAt', TimeProperty],
         ['deletedAt', TimeProperty],

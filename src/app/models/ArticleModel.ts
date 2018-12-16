@@ -1,18 +1,18 @@
 import Model from './Model';
 import { TagModel, CategoryModel } from '.';
-import { Property } from './Properties';
+import { AnyProperty, HtmlProperty } from './Properties';
 
 class ArticleModel extends Model {
 
-    title: string;
-    blurb: string;
-    link: string;
-    image: string;
+    title: AnyProperty;
+    blurb: AnyProperty;
+    slug: AnyProperty;
+    image: AnyProperty;
     categories: CategoryModel[];
     tags: TagModel[];
-    content: any[];
-    metaTitle: string;
-    metaDescription: string;
+    content: HtmlProperty;
+    metaTitle: AnyProperty;
+    metaDescription: AnyProperty;
 
     constructor(data: object) {
         super(data);
@@ -22,13 +22,14 @@ class ArticleModel extends Model {
     public static getStaticName = (): string => 'article';
 
     protected assignableProperties = (): Map<string, any> => new Map([
-        ['title', Property],
-        ['blurb', Property],
-        ['link', Property],
-        ['image', Property],
-        ['tags', Property],
-        ['metaTitle', Property],
-        ['metaDescription', Property],
+        ['title', AnyProperty],
+        ['blurb', AnyProperty],
+        ['slug', AnyProperty],
+        ['image', AnyProperty],
+        ['tags', AnyProperty],
+        ['content', HtmlProperty],
+        ['metaTitle', AnyProperty],
+        ['metaDescription', AnyProperty],
     ]);
 
 }

@@ -1,10 +1,13 @@
-import Property from './Property';
+import AnyProperty from './AnyProperty';
 import TimeProperty from './TimeProperty';
+import HtmlProperty from './HtmlProperty';
 
 export {
 
-    Property,
+    AnyProperty, // TODO: Temp
 
     TimeProperty,
+
+    HtmlProperty,
 
 }

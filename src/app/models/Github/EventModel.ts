@@ -1,5 +1,5 @@
 import Model from "../Model";
-import { Property } from '../Properties';
+import { AnyProperty } from '../Properties';
 import ActorModel from './ActorModel';
 import RepoModel from './RepoModel';
 // const changeCase = require('change-case')
@@ -7,10 +7,10 @@ import * as changeCase from 'change-case';
 
 class EventModel extends Model {
 
-    public type: Property;
+    public type: AnyProperty;
     public actor: ActorModel;
     public repo: RepoModel;
-    public payload: Property;
+    public payload: AnyProperty;
 
     constructor(data: object) {
         super(data);
@@ -24,10 +24,10 @@ class EventModel extends Model {
     }
 
     protected assignableProperties = (): Map<string, any> => new Map([
-        ['type', Property],
+        ['type', AnyProperty],
         ['actor', ActorModel],
         ['repo', RepoModel],
-        ['payload', Property],
+        ['payload', AnyProperty],
     ]);
 
 }

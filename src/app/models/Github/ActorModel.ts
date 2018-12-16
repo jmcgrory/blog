@@ -1,11 +1,11 @@
 import Model from "../Model";
-import { Property } from '../Properties';
+import { AnyProperty } from '../Properties';
 
 class ActorModel extends Model {
 
-    public displayLogin: Property;
-    public url: Property;
-    public avatarUrl: Property;
+    public displayLogin: AnyProperty;
+    public url: AnyProperty;
+    public avatarUrl: AnyProperty;
 
     constructor(data: object) {
         super(data);
@@ -15,9 +15,9 @@ class ActorModel extends Model {
     public static getStaticName = (): string => 'actor';
 
     protected assignableProperties = (): Map<string, any> => new Map([
-        ['displayLogin', Property],
-        ['url', Property],
-        ['avatarUrl', Property],
+        ['displayLogin', AnyProperty],
+        ['url', AnyProperty],
+        ['avatarUrl', AnyProperty],
     ]);
 
 }

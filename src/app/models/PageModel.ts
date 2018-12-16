@@ -1,13 +1,13 @@
 import Model from './Model';
-import { Property } from './Properties';
+import { AnyProperty, HtmlProperty } from './Properties';
 
 class PageModel extends Model {
 
-    title: string;
-    content: any[];
-    image: string;
-    metaTitle: string;
-    metaDescription: string;
+    title: AnyProperty;
+    content: HtmlProperty;
+    image: AnyProperty;
+    metaTitle: AnyProperty;
+    metaDescription: AnyProperty;
 
     constructor(data: object) {
         super(data);
@@ -17,11 +17,11 @@ class PageModel extends Model {
     public static getStaticName = (): string => 'page';
 
     protected assignableProperties = (): Map<string, any> => new Map([
-        ['title', Property],
-        ['image', Property],
-        ['content', Property],
-        ['metaTitle', Property],
-        ['metaDescription', Property],
+        ['title', AnyProperty],
+        ['image', AnyProperty],
+        ['content', HtmlProperty],
+        ['metaTitle', AnyProperty],
+        ['metaDescription', AnyProperty],
     ]);
 
 }

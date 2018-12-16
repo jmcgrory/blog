@@ -26,7 +26,7 @@ export class APIService {
         let params = new HttpParams();
         if (filters !== null) {
             [...filters.toMap().entries()].forEach(([key, value]) => {
-                params = params.append(key, value);
+                params = params.set(key, value);
             });
         }
         return { headers: headers, params }
@@ -54,12 +54,22 @@ export class APIService {
         ).pipe(catchError(this.handleError));
     }
 
-    public getModel = () => {
-        // '/get', 'get', this.getModel
+    public getModel = (route: string, id: string) => {
+        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        let params = new HttpParams().set('id', id);
+        return this.http.get<any>(
+            `${this.getUrl()}/${route}/get`,
+            { headers: headers, params }
+        )
     }
 
-    public getModels = () => {
-        // '/get-many', 'get', this.getModels
+    public getModels = (route: string, ids: string[]) => {
+        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        let params = new HttpParams().set('ids', ids.join(','));
+        return this.http.get<any>(
+            `${this.getUrl()}/${route}/get-many`,
+            { headers: headers, params }
+        )
     }
 
     public save = () => {

@@ -1,5 +1,5 @@
 import Model from './Model';
-import { Property } from './Properties';
+import { AnyProperty } from './Properties';
 
 class TagModel extends Model {
 
@@ -15,9 +15,9 @@ class TagModel extends Model {
     public static getStaticName = (): string => 'tag';
 
     protected assignableProperties = (): Map<string, any> => new Map([
-        ['name', Property],
-        ['description', Property],
-        ['icon', Property],
+        ['name', AnyProperty],
+        ['description', AnyProperty],
+        ['icon', AnyProperty],
     ]);
 
 }
