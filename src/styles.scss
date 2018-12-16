@@ -5,83 +5,102 @@
 @import './app/partials/icons';
 
 body {
-
     @extend %monospace;
-
     font-size: 14px;
-
     font-weight: $normal;
-
     margin: 0 auto;
-
     max-width: #{$max-width}px;
-
     padding: 0.5em 1em;
-
 }
 
 a {
-
     color: $primary;
-
     text-decoration-style: dotted;
-
     @extend %link;
-
 }
 
 h1, h2, h3, h4, h5, h6 {
-
     margin: 0.25em auto 0.5em;
-
     font-weight: $bold;
-
 }
 
 h1 {
-
     font-size: 1.25em;
-
     text-transform: uppercase;
-
 }
 
 h2 {
-
     font-size: 1.75em;
-
 }
 
 h3, h4 {
-
     font-size: 1.25em;
-
 }
 
 hr {
-
     margin: 1em auto;
-
     border-width: 0;
-
     border-bottom: 2px solid $primary;
-
     &.subtle {
-
         border-bottom: 1px solid $shade-light;
+    }
+}
 
+ul {
+    margin: 0.5em 0 1em 1em;
+}
+
+p {
+    margin: 0.5em auto 1em;
+}
+
+// Form Styles
+
+form {
+
+    @extend %monospace;
+
+    input, textarea, select, button {
+        padding: 0.75em;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    input[type='submit'], button {
+        background: $success;
+        color: white;
+        border: 2px solid $success;
+        cursor: pointer;
+    }
+
+    label {
+        width: 100%;
+        margin: 0 auto 0.5em;
+        color: $shade-dark;
+    }
+
+    label, input, textarea, select, button {
+        display: block;
+        font-size: 1.125em;
+        appearance: none;
+        -webkit-appearance: none;
+        @extend %border-box;
+    }
+
+    input[type='text'],
+    input[type='email'],
+    input[type='tel'],
+    input[type='password'],
+    textarea {
+        border: 1px solid $shade-light;
+        border-bottom-width: 2px;
+        border-bottom-color: $shade-medium;
     }
 
 }
 
-ul {
+.form-group {
 
-    margin: 0.5em 0 1em 1em;
-
-}
-
-p {
-
-    margin: 0.5em auto 1em;
+    margin-bottom: 1em;
 
 }

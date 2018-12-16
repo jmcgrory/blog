@@ -23,7 +23,8 @@ const routes: Routes = [
   { path: 'article/:slug', component: ArticleComponent },
   { path: 'articles', component: ArticlesComponent },
   { path: 'contact', component: ContactComponent },
-  { path: '**', component: ErrorComponent }
+  { path: 'login', component: LoginComponent },
+  { path: '**', component: ErrorComponent },
 ];
 
 @NgModule({

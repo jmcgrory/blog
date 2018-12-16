@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { API_URI } from '../config';
-import { Notice } from 'src/app/models';
+import { Notice, UserModel } from 'src/app/models';
 import APIFilter from '../models/Filter/APIFilter';
 
 type Base = 'article' | 'category' | 'tag' | 'user' | 'page';
@@ -39,6 +39,17 @@ export class APIService {
         }
         return throwError(message);
     };
+
+    public authenticateUser = (user: UserModel) => {
+        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        let params = new HttpParams();
+        params = params.set('username', user.username.toString());
+        params = params.set('password', user.password.toString());
+        return this.http.get<any>(
+            `${this.getUrl()}/user/authenticate`,
+            { headers: headers, params }
+        )
+    }
 
     public ping = () => {
         return this.http.get<any>(
