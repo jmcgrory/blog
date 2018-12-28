@@ -1,0 +1,33 @@
+<h3>Articles</h3>
+
+<div class="table">
+  <div class="trow">
+    <div class="th">
+      <span>Title</span>
+    </div>
+    <div class="th">
+      <span>Date</span>
+    </div>
+    <div class="th">
+      <span>Link</span>
+    </div>
+    <div class="th">
+      <span>Actions</span>
+    </div>
+  </div>
+  <div class="trow" *ngFor="let article of articles">
+    <div class="td">
+      <span>{{ article.title }}</span>
+    </div>
+    <div class="td">
+      <span>{{ article.createdAt }}</span>
+    </div>
+    <div class="td">
+      <span>{{ article.slug }}</span>
+    </div>
+    <div class="td">
+      <app-button (emitter)="selectArticle(article.id)" [icon]="'edit'" [level]="'success'"></app-button>
+      <app-button (emitter)="deleteArticle(article.id)" [icon]="'delete'" [level]="'warning'"></app-button>
+    </div>
+  </div>
+</div>

@@ -16,6 +16,7 @@ import { LoginComponent } from './components/page/login/login.component';
 import { DashboardComponent } from './components/page/dashboard/dashboard.component';
 import { MediaComponent } from './components/page/media/media.component';
 import { EditComponent } from './components/page/edit/edit.component';
+import { DashboardArticlesComponent } from './components/page/dashboard/article/dashboardArticles.component';
 
 // Guards
 import { AuthGuard } from './guards/auth.guard';
@@ -37,6 +38,7 @@ const routes: Routes = [
         canActivateChild: [AuthGuard],
         children: [
           { path: 'media', component: MediaComponent },
+          { path: 'articles', component: DashboardArticlesComponent },
           { path: 'edit/:id', component: EditComponent },
         ],
       }

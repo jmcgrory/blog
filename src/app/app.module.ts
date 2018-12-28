@@ -37,6 +37,7 @@ import { NoticeComponent } from './components/layout/notice/notice.component';
 // Custom
 
 import { MarkdownModule } from 'ngx-markdown';
+import { DashboardArticlesComponent } from './components/page/dashboard/article/dashboardArticles.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { MarkdownModule } from 'ngx-markdown';
     ImageComponent,
     GiteventComponent,
     NoticesComponent,
+    DashboardArticlesComponent,
   ],
   imports: [
     BrowserModule,
