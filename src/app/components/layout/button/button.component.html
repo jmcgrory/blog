@@ -1,3 +1,6 @@
-<p>
-  button works!
-</p>
+<button (click)="onClick()" [ngClass]="classList">
+    <span *ngIf="label">{{label}}</span>
+    <span *ngIf="icon">
+        <i class="icon">{{icon}}</i>
+    </span>
+</button>

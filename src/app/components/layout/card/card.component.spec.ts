@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
 
 // Stubs
 
-@Component({ selector: 'image-component', template: '' })
+@Component({ selector: 'app-image', template: '' })
 class ImageComponent { }
 
 describe('CardComponent', () => {

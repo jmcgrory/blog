@@ -1,9 +1,23 @@
-<div [ngClass]="notice.getClasses()">
+<div [ngClass]="getClasses()">
   <span class="notice-level">
     <i class="icon">{{notice.getIcon()}}</i>
   </span>
-  <span class="notice-message">{{notice.message}}</span>
+  <span class="notice-message">{{notice.getMessage()}}</span>
   <ul>
-    <button (click)="dismissNotice($event, notice.getId())"><span><i class="icon">close</i></span></button>
+    <li *ngFor="let action of notice.getActions()">
+      <app-button
+        (emitter)="action.action($event)"
+        [label]="action.label"
+        [icon]="action.icon"
+        [isFluid]="true"
+      ></app-button>
+    </li>
+    <li>
+      <app-button
+        (emitter)="dismissNotice($event, notice.getId())"
+        [icon]="'close'"
+        [isFluid]="true"
+      ></app-button>
+    </li>
   </ul>
 </div>

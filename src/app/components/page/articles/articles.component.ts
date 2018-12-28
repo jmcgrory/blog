@@ -4,7 +4,7 @@ import { APIService } from '../../../services/API.service';
 import { CategoryModel } from 'src/app/models';
 
 @Component({
-    selector: 'articles-component',
+    selector: 'app-articles',
     templateUrl: './articles.component.html',
     styleUrls: ['./articles.component.scss']
 })

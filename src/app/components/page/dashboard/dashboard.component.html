@@ -1,3 +1,36 @@
-<p>
-  dashboard works!
-</p>
+<h2>Dashboard</h2>
+
+<a (click)="logOut()">Logout</a>
+
+<app-button (emitter)="logOut()" [label]="'Log Out'" [level]="'warning'"></app-button>
+
+<div class="table">
+  <div class="trow">
+    <div class="th">
+      <span>Title</span>
+    </div>
+    <div class="th">
+      <span>Date</span>
+    </div>
+    <div class="th">
+      <span>Link</span>
+    </div>
+    <div class="th">
+      <span>Actions</span>
+    </div>
+  </div>
+  <div class="trow" *ngFor="let article of articles">
+    <div class="td">
+      <span>{{ article.title }}</span>
+    </div>
+    <div class="td">
+      <span>{{ article.createdAt }}</span>
+    </div>
+    <div class="td">
+      <span>{{ article.slug }}</span>
+    </div>
+    <div class="td">
+      <span>XXX</span>
+    </div>
+  </div>
+</div>

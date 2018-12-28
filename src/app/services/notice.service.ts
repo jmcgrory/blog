@@ -1,26 +1,30 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Notice } from '../models';
-import Level from '../models/Notice/Level';
 
 @Injectable({
     providedIn: 'root'
 })
 export class NoticeService {
 
-    private source = new BehaviorSubject<Notice>(new Notice('Successful Init', 'success'));
-    notice: Observable<Notice> = this.source.asObservable();
+    private static readonly actions = new Map([
+        [ 0, 'clear'],
+    ]);
 
-    constructor() {
-    }
+    private noticeSource = new BehaviorSubject<Notice>(
+        new Notice('Successful Init', 'success')
+    );
+    notice: Observable<Notice> = this.noticeSource.asObservable();
+
+    private actionSource = new BehaviorSubject<string>('clear');
+    actions: Observable<string> = this.actionSource.asObservable();
 
     public add = (notice: Notice): void => {
-        this.source.next(notice);
+        this.noticeSource.next(notice);
     }
 
-    public remove = (id: string): boolean => {
-        console.log('remove', id);
-        return false;
+    public clear = (): void => {
+        this.actionSource.next(NoticeService.actions.get(0));
     }
 
 }

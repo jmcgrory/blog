@@ -5,15 +5,15 @@ import { Component, Input } from '@angular/core';
 
 // Stubs
 
-@Component({ selector: 'image-component', template: '' })
+@Component({ selector: 'app-image', template: '' })
 class ImageComponent { }
 
-@Component({ selector: 'content-component', template: '' })
+@Component({ selector: 'app-content', template: '' })
 class ContentComponent {
   @Input() content: any;
 }
 
-@Component({ selector: 'gitevent-component', template: '' })
+@Component({ selector: 'app-gitevent', template: '' })
 class GiteventComponent {
   @Input() event: any;
 }

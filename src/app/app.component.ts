@@ -4,14 +4,13 @@ import { Notice } from './models';
 import { NoticeService } from './services/notice.service';
 
 @Component({
-    selector: 'root-component',
+    selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
 
     year: number;
-    notices: Notice[] = [];
 
     constructor(
         private service: APIService,

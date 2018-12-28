@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import EventModel from 'src/app/models/Github/EventModel';
 
 @Component({
-  selector: 'gitevent-component',
+  selector: 'app-gitevent',
   templateUrl: './gitevent.component.html',
   styleUrls: ['./gitevent.component.scss']
 })

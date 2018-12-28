@@ -1,14 +1,30 @@
-// Palette
+// Primary
 
 $primary: #2f3638;
-$warning: #cd3b3f;
-$success: #16d594;
 
 // Shades
 
 $shade-dark: lighten($primary, 25%);
 $shade-medium: lighten($primary, 50%);
 $shade-light:  lighten($primary, 75%);
+
+// Palette
+
+$warning: #cd3b3f;
+$error: darken($warning, 10%);
+$fatal: darken($error, 10%);
+$success: #16d594;
+$info: $shade-medium;
+$debug: $shade-medium;
+
+$palette: (
+  'warning': $warning,
+  'error': $error,
+  'fatal': $fatal,
+  'success': $success,
+  'info': $info,
+  'debug': $debug
+);
 
 // Weights
 

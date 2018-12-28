@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
 
 // Stubs
 
-@Component({ selector: 'navigation-component', template: '' })
+@Component({ selector: 'app-navigation', template: '' })
 class NavigationComponent { }
 
 // Descriptors

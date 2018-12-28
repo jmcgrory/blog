@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
 
 // Stubs
 
-@Component({ selector: 'card-component', template: '' })
+@Component({ selector: 'app-card', template: '' })
 class CardComponent {
   @Input() card: any;
 }

@@ -1,6 +1,6 @@
-<image-component></image-component>
+<app-image></app-image>
 
-<content-component [content]="content"></content-component>
+<app-content [content]="content"></app-content>
 
 <hr class="subtle" />
 
@@ -8,8 +8,8 @@
 
 <div class="timeline">
 
-    <gitevent-component *ngFor="let event of gitEvents" [event]="event">
+    <app-gitevent *ngFor="let event of gitEvents" [event]="event">
 
-    </gitevent-component>
+    </app-gitevent>
 
 </div>

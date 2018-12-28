@@ -4,14 +4,14 @@ import { Subscription } from 'rxjs';
 import EventModel from '../../../models/Github/EventModel';
 
 @Component({
-  selector: 'about-component',
+  selector: 'app-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
-  content: string = `### Bonjour!`;
+  content: string = '### Bonjour!';
   gitEvents: EventModel[];
 
   constructor(

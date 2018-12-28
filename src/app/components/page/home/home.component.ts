@@ -5,7 +5,7 @@ import APIFilter from '../../../models/Filter/APIFilter';
 import ArticleModel from 'src/app/models/ArticleModel';
 
 @Component({
-    selector: 'home-component',
+    selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss']
 })
@@ -28,15 +28,13 @@ export class HomeComponent implements OnInit, OnDestroy {
         });
 
         const idFilter = new APIFilter({ limit: 4 });
-        this.articleService.getIds('article', idFilter).subscribe((data) => {
-            if (data.length) {
-                this.articleService.getModels('article', data.map(
-                    (single) => single._id)
+        this.articleService.getIds('article', idFilter).subscribe((ids) => {
+            if (ids.length) {
+                this.articleService.getModels(
+                    'article', ids
                 ).subscribe((data) => {
                     console.log(data);
-                    this.featured = data.map((article): CardModel => {
-                        return new CardModel(article);
-                    })
+                    this.featured = data.map((article): CardModel => new CardModel(article));
                 });
             }
         });

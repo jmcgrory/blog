@@ -6,25 +6,17 @@ class TimeProperty extends PrimitiveProperty {
     public value: any;
 
     constructor(value: any) {
-
         super(value);
-
         this.value = moment(value);
-
     }
 
     public fromNow = (): string => {
-
         return moment().to(this.value);
-
     }
 
     public toString = (): string => {
-
-        return this.value.format('DD');
-
+        return this.value.format();
     }
-
 }
 
 export default TimeProperty;

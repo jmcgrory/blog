@@ -1,32 +1,17 @@
 @import "../../../partials/variables";
 @import "../../../partials/mixins";
 @import "../../../partials/fonts";
+@import "../../../partials/extends";
 
 .notice {
-
     margin: 0.5em auto;
     background: currentColor;
-    @include flexbox;
-    @include align-items(center);
+    @extend %row;
 
-    &.info {
-        color: $shade-dark;
-    }
-
-    &.success {
-        color: $success;
-    }
-
-    &.fatal {
-        color: $warning;
-    }
-
-    &.error {
-        color: $warning;
-    }
-
-    &.debug {
-        color: $shade-medium;
+    @each $level, $color in $palette {
+        &.level-#{$level} {
+            color: $color;
+        }
     }
 
     i.icon {
@@ -36,35 +21,16 @@
 
 ul {
     margin: 0 auto;
-}
+    @extend %row;
 
-button {
-    -webkit-appearance: none;
-    border: none;
-    background: none;
-    padding: 0;
-    display: block;
-    font-weight: bold;
-    font-size: 1em;
-    cursor: pointer;
-    color: inherit;
-    border-left: 1px solid white;
-    @extend %monospace;
-
-    &:hover {
-        background: rgba(0,0,0,0.2);
-        @include transition();
-    }
-
-    span {
+    li {
         display: block;
+        border-left: 1px solid white;
     }
 }
 
 span {
-
     color: white;
-
     padding: 1em;
 
     &.notice-message {

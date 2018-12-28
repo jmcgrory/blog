@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { API_URI } from '../config';
 import { UserModel } from '../models';
 import APIStore from '../application/APIStore';
-
-type Base = 'article' | 'category' | 'tag' | 'user' | 'page';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
@@ -14,7 +13,8 @@ type Base = 'article' | 'category' | 'tag' | 'user' | 'page';
 export class AuthService {
 
     constructor(
-        private http: HttpClient
+        private http: HttpClient,
+        private router: Router
     ) { }
 
     private getUrl = (): string => `${API_URI}`;
@@ -25,30 +25,43 @@ export class AuthService {
             message = error.error.message;
         }
         return throwError(message);
-    };
+    }
 
     public authenticateUser = (user: UserModel) => {
-        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         let params = new HttpParams();
         params = params.set('username', user.username.toString());
         params = params.set('password', user.password.toString());
+        console.log('[authenticateUser]:', user.username.value, user.password.value);
         return this.http.get<any>(
             `${this.getUrl()}/user/authenticate`,
             { headers: headers, params }
-        )
+        );
     }
 
-    public authenticateToken = () => {
+    public authenticateToken = (): Observable<boolean> => {
         const { username, token } = APIStore.getAuth();
-        let headers = new HttpHeaders({
+        console.log('[authenticateToken]:', username, token);
+        const headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': `jwt ${token}`
         });
-        let params = new HttpParams().set('username', username);
-        return this.http.get<any>(
+        const params = new HttpParams().set('username', username);
+        return this.http.get<Response>(
             `${this.getUrl()}/user/token`,
             { headers: headers, params }
-        )
+        ).pipe(catchError(() => {
+            this.logOut();
+            return throwError('Authentication Error.');
+        })).pipe(map((data) => {
+            console.log(data);
+            return true;
+        }));
+    }
+
+    public logOut = () => {
+        APIStore.removeAuth();
+        this.router.navigate(['/login']);
     }
 
 }

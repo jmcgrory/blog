@@ -28,7 +28,7 @@ abstract class Model {
         return `${constructor.getStaticName()}`;
     }
 
-    public fromData = (data: any, convertCase: boolean = false): this => {
+    public fromData = (data: any, convertCase: boolean = true): this => {
         const properties: Map<string, any> = this.getProperties();
         Object.entries(data).forEach(([key, value]) => {
             const newKey = convertCase ? this.snakeToCamelCase(key) : key;
@@ -38,11 +38,18 @@ abstract class Model {
             }
         });
         return this;
-    };
+    }
 
     protected snakeToCamelCase = (string: string): string => {
-        if (!string.includes('_')) return string;
-        return string.split('_').reduce((prev, current, i) => {
+        const indexOfUnderscore = string.indexOf('_');
+        if (indexOfUnderscore === -1) {
+            return string;
+        }
+        const characterArray = string.split('_').filter((char) => char.length);
+        return characterArray.reduce((prev, current, i) => {
+            if (!current) {
+                return prev + current;
+            }
             const appendage = (i > 0) ? `${current[0].toUpperCase()}${current.substring(1)}` : current;
             return `${prev}${appendage}`;
         });
@@ -54,17 +61,20 @@ abstract class Model {
         ['createdAt', TimeProperty],
         ['updatedAt', TimeProperty],
         ['deletedAt', TimeProperty],
-    ]);
+    ])
 
     protected assignableProperties = (): Map<string, any> => new Map();
 
     protected getProperties = (): Map<string, any> => new Map([
         ...this.defaultProperties(),
         ...this.assignableProperties(),
-    ]);
+    ])
 
+    /**
+     * @todo Can be reduce
+     */
     public toObject = (): object => {
-        let object = {};
+        const object = {};
         [...this.getProperties().keys()].forEach(
             (key) => {
                 const propertyValue = this[key];

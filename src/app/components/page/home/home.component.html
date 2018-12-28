@@ -1,7 +1,7 @@
-<image-component></image-component>
+<app-image></app-image>
 
-<content-component *ngIf="pageArticle" [content]="pageArticle.content.value"></content-component>
-<content-component *ngIf="pageArticle" [content]="test"></content-component>
+<app-content *ngIf="pageArticle" [content]="pageArticle.content.value"></app-content>
+<app-content *ngIf="pageArticle" [content]="test"></app-content>
 
 <p [innerHtml]="test"></p>
 
@@ -9,4 +9,4 @@
 
 <h3>Latest Articles</h3>
 
-<cards-component [cards]="featured"></cards-component>
+<app-cards [cards]="featured"></app-cards>

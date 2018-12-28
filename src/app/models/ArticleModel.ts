@@ -27,6 +27,7 @@ class ArticleModel extends Model {
         ['slug', AnyProperty],
         ['image', AnyProperty],
         ['tags', AnyProperty],
+        ['categories', AnyProperty],
         ['content', HtmlProperty],
         ['metaTitle', AnyProperty],
         ['metaDescription', AnyProperty],

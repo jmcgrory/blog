@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CardModel } from '../../../models';
 
 @Component({
-  selector: 'cards-component',
+  selector: 'app-cards',
   templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.scss']
 })
