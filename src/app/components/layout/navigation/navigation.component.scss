@@ -2,67 +2,42 @@
 @import '../../../partials/extends';
 
 header {
-
     margin: 0.5em auto;
-
     @include flexbox;
-
     @include justify-content(space-between);
-
     @include align-items(baseline);
-
 }
 
-h1 {
-
+h1, h2, h3, h4, h5, h6 {
     margin: 0 auto;
-
     @include flex-shrink(0);
-
 }
 
 nav {
-
     @include flex-grow(1);
 
     ul {
-
         margin: 0 auto;
-
         list-style: none;
-
         @include flexbox;
-
         @include justify-content(flex-end);
-
     }
     
     a {
-
         padding: 0.25em 0.75em;
-    
         text-decoration: none;
 
         &:hover {
-    
             text-decoration: underline;
-    
             text-decoration-style: solid;
-    
         }
 
     }
 
     li {
-
         @include inline-flex;
-
         &:last-child a {
-
             padding-right: 0;
-
         }
-
     }
-
 }

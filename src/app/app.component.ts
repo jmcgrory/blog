@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { APIService } from './services/API.service';
 import { Notice } from './models';
 import { NoticeService } from './services/notice.service';
+import NavItem from './models/Navigation/NavItem';
 
 @Component({
     selector: 'app-root',
@@ -10,7 +11,29 @@ import { NoticeService } from './services/notice.service';
 })
 export class AppComponent implements OnInit {
 
-    year: number;
+    public year: number;
+    public mainNavigation: NavItem[] = [
+        new NavItem({
+            routerLink: '',
+            title: 'Link to Homepage',
+            label: 'Home'
+        }),
+        new NavItem({
+            routerLink: 'about',
+            title: 'Link to About Page',
+            label: 'About'
+        }),
+        new NavItem({
+            routerLink: 'articles',
+            title: 'Link to Articles',
+            label: 'Articles'
+        }),
+        new NavItem({
+            routerLink: 'contact',
+            title: 'Link to Contact Page',
+            label: 'Contact'
+        }),
+    ];
 
     constructor(
         private service: APIService,

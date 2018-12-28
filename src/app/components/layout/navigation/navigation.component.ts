@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import NavItem from '../../../models/Navigation/NavItem';
 
 @Component({
   selector: 'app-navigation',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
+  @Input() headingText: string;
+  @Input() headingLevel: number = 1;
+  @Input() isMain: boolean = false;
+  @Input() items: NavItem[];
+  public heading: string;
+
+  private setHeading = (): void => {
+    const tag = `h${this.headingLevel}`;
+    this.heading = `<${tag}>${this.headingText}</${tag}>`;
+  }
 
   ngOnInit() {
+    if (this.headingText) {
+      this.setHeading();
+    }
   }
 
 }

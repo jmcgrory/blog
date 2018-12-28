@@ -1,21 +1,15 @@
-<header>
-  <h1>Jmcgrory</h1>
-  <nav id="main">
+<header class="navigation">
+  <span [innerHTML]="heading"></span>
+  <nav id="{{ isMain ? 'main' : 'nav-' + headingLevel  }}">
     <ul>
-      <li>
-        <a routerLink="" routerLinkActive="active" title="Link to Homepage">Home</a>
-      </li>
-      <li>
-        <a routerLink="about" routerLinkActive="active" title="Link to About Page">About</a>
-      </li>
-      <li>
-        <a routerLink="articles" routerLinkActive="active" title="Link to Articles Page">Articles</a>
-      </li>
-      <li>
-        <a routerLink="dashboard" routerLinkActive="active" title="Link to Dashboard">Dashboard</a>
-      </li>
-      <li>
-        <a routerLink="contact" routerLinkActive="active" title="Link to Contact Page">Contact</a>
+      <li *ngFor="let item of items">
+        <a
+          routerLink="{{item.routerLink}}"
+          routerLinkActive="{{item.active}}"
+          title="{{item.title}}"
+          (click)="item.click">
+          {{item.label}}
+        </a>
       </li>
     </ul>
   </nav>

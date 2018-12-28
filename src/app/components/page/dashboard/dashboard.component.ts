@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { NoticeService } from '../../../services/notice.service';
 import Notice from '../../../models/Notice/Notice';
+import NavItem from '../../../models/Navigation/NavItem';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,6 +16,7 @@ import Notice from '../../../models/Notice/Notice';
 export class DashboardComponent implements OnInit {
 
   articles: ArticleModel[] = [];
+  dashboardNavigation: NavItem[] = [];
 
   constructor(
       private authService: AuthService,
@@ -24,6 +26,7 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.setNavigation();
     const articleFilter = new APIFilter({});
     this.apiService.getIds('article', articleFilter).subscribe((ids) => {
       // TODO: Handle Errors
@@ -33,6 +36,16 @@ export class DashboardComponent implements OnInit {
         });
       }
     });
+  }
+
+  setNavigation = () => {
+    this.dashboardNavigation = [
+      new NavItem({ label: 'Dash', routerLink: 'dashboard' }),
+      new NavItem({ label: 'Articles', routerLink: 'dashboard/articles' }),
+      new NavItem({ label: 'Pages', routerLink: 'dashboard/pages' }),
+      new NavItem({ label: 'Media', routerLink: 'dashboard/media' }),
+      new NavItem({ label: 'Logout', click: this.logOut }),
+    ];
   }
 
   logOut = () => {
