@@ -54,8 +54,7 @@ export class AuthService {
             this.logOut();
             return throwError('Authentication Error.');
         })).pipe(map((data) => {
-            console.log(data);
-            return true;
+            return !!(data);
         }));
     }
 

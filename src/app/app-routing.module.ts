@@ -15,7 +15,7 @@ import { ErrorComponent } from './components/page/error/error.component';
 import { LoginComponent } from './components/page/login/login.component';
 import { DashboardComponent } from './components/page/dashboard/dashboard.component';
 import { MediaComponent } from './components/page/media/media.component';
-import { EditComponent } from './components/page/edit/edit.component';
+import { EditComponent } from './components/page/dashboard/edit/edit.component';
 import { DashboardArticlesComponent } from './components/page/dashboard/article/dashboardArticles.component';
 
 // Guards
@@ -37,8 +37,8 @@ const routes: Routes = [
         path: '',
         canActivateChild: [AuthGuard],
         children: [
+          { path: '', component: DashboardArticlesComponent },
           { path: 'media', component: MediaComponent },
-          { path: 'articles', component: DashboardArticlesComponent },
           { path: 'edit/:id', component: EditComponent },
         ],
       }

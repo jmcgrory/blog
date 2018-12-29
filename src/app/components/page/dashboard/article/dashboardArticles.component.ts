@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { APIService } from '../../../../services/API.service';
 import ArticleModel from '../../../../models/ArticleModel';
 import APIFilter from '../../../../models/Filter/APIFilter';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-articles',
@@ -13,7 +14,8 @@ export class DashboardArticlesComponent implements OnInit {
   articles: ArticleModel[] = [];
 
   constructor(
-      private apiService: APIService
+      private apiService: APIService,
+      private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -26,5 +28,14 @@ export class DashboardArticlesComponent implements OnInit {
         });
       }
     });
+  }
+
+  selectArticle = (id: string): void => {
+    console.log('SELECT:', id);
+    this.router.navigate(['dashboard/edit/', id]);
+  }
+
+  deleteArticle = (id: string): void => {
+    console.log('DELETE:', id);
   }
 }

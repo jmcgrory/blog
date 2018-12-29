@@ -26,8 +26,8 @@
       <span>{{ article.slug }}</span>
     </div>
     <div class="td">
-      <app-button (emitter)="selectArticle(article.id)" [icon]="'edit'" [level]="'success'"></app-button>
-      <app-button (emitter)="deleteArticle(article.id)" [icon]="'delete'" [level]="'warning'"></app-button>
+      <app-button (emitter)="selectArticle(article.id.toString())" [icon]="'edit'" [level]="'success'"></app-button>
+      <app-button (emitter)="deleteArticle(article.id.toString())" [icon]="'delete'" [level]="'warning'"></app-button>
     </div>
   </div>
 </div>

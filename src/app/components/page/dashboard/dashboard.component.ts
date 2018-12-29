@@ -13,7 +13,6 @@ import NavItem from '../../../models/Navigation/NavItem';
 export class DashboardComponent implements OnInit {
 
   dashboardNavigation: NavItem[] = [];
-  poem: string = `<blockquote>Hello There.</blockquote> - <strong>Ewan McGregor</strong>`;
 
   constructor(
       private authService: AuthService,
@@ -25,10 +24,14 @@ export class DashboardComponent implements OnInit {
     this.setNavigation();
   }
 
+  /**
+   * @todo base dashboard has no content
+   * @todo pages support at some point
+   */
   setNavigation = () => {
     this.dashboardNavigation = [
-      new NavItem({ label: 'Dash', routerLink: '/dashboard' }),
-      new NavItem({ label: 'Articles', routerLink: 'articles' }),
+      // new NavItem({ label: 'Dash', routerLink: '/dashboard' }),
+      new NavItem({ label: 'Articles', routerLink: '/dashboard' }),
       // new NavItem({ label: 'Pages', routerLink: 'dashboard/pages' }),
       new NavItem({ label: 'Media', routerLink: 'media' }),
       new NavItem({ label: 'Logout', click: this.logOut }),

@@ -11,6 +11,8 @@ import NavItem from './models/Navigation/NavItem';
 })
 export class AppComponent implements OnInit {
 
+    /** @todo currently unused */
+    private ping: any;
     public year: number;
     public mainNavigation: NavItem[] = [
         new NavItem({
@@ -43,14 +45,14 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
-
         // Get Ping Response
-        this.service.ping().subscribe((data) => {
-            console.log(data);
-        }, (error) => {
-            this.noticeService.add(new Notice(error, 'error'));
-        });
-
+        this.service.ping().subscribe(
+            (data) => {
+                this.ping = data;
+            },
+            (error) => {
+                this.noticeService.add(new Notice(error, 'error'));
+            }
+        );
     }
-
 }

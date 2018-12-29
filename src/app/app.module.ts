@@ -20,7 +20,7 @@ import { ErrorComponent } from './components/page/error/error.component';
 import { LoginComponent } from './components/page/login/login.component';
 import { DashboardComponent } from './components/page/dashboard/dashboard.component';
 import { MediaComponent } from './components/page/media/media.component';
-import { EditComponent } from './components/page/edit/edit.component';
+import { EditComponent } from './components/page/dashboard/edit/edit.component';
 
 // Layout
 

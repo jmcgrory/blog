@@ -33,7 +33,6 @@ export class HomeComponent implements OnInit, OnDestroy {
                 this.articleService.getModels(
                     'article', ids
                 ).subscribe((data) => {
-                    console.log(data);
                     this.featured = data.map((article): CardModel => new CardModel(article));
                 });
             }
