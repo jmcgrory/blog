@@ -20,7 +20,9 @@ class EventModel extends Model {
     public static getStaticName = (): string => 'event';
 
     /**
-     * @todo despite what the IDE says, this is used within templates
+     * Returns formatted event type
+     * Despite what the IDE says, this is used within templates
+     * @todo either use a pipe or set on component...
      */
     public getType = (): string => {
         return changeCase.title(this.type.value);
