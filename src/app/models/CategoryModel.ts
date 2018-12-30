@@ -1,5 +1,4 @@
 import Model from './Model';
-import { TagModel } from '.';
 import { AnyProperty } from './Properties';
 
 class CategoryModel extends Model {
@@ -17,7 +16,7 @@ class CategoryModel extends Model {
     protected assignableProperties = (): Map<string, any> => new Map([
         ['name', AnyProperty],
         ['description', AnyProperty],
-    ]);
+    ])
 
 }
 

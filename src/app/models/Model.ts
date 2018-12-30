@@ -23,7 +23,7 @@ abstract class Model {
     public static getStaticName = (): string => 'model';
 
     public getModelName = (): string => {
-        // TS requires 'any' type to access constr methods
+        // TS requires 'any' type to access constructor methods
         const constructor: any = this.constructor;
         return `${constructor.getStaticName()}`;
     }
@@ -77,7 +77,7 @@ abstract class Model {
         [...this.getProperties().keys()].forEach(
             (key) => {
                 const propertyValue = this[key];
-                // TODO: Remove
+                // TODO: IdProperty will handle...
                 // if (propertyValue instanceof Model) {
                 //     object[key] = propertyValue.id;
                 // } else

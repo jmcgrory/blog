@@ -1,4 +1,4 @@
-import Model from "../Model";
+import Model from '../Model';
 import { AnyProperty } from '../Properties';
 
 class ActorModel extends Model {

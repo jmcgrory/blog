@@ -1,8 +1,7 @@
-import Model from "../Model";
+import Model from '../Model';
 import { AnyProperty } from '../Properties';
 import ActorModel from './ActorModel';
 import RepoModel from './RepoModel';
-// const changeCase = require('change-case')
 import * as changeCase from 'change-case';
 
 class EventModel extends Model {
