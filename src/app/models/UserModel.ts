@@ -1,4 +1,4 @@
-import Model from "./Model";
+import Model from './Model';
 import { AnyProperty } from './Properties';
 
 class UserModel extends Model {
@@ -16,7 +16,7 @@ class UserModel extends Model {
     protected assignableProperties = (): Map<string, any> => new Map([
         ['username', AnyProperty],
         ['password', AnyProperty],
-    ]);
+    ])
 
 }
 

@@ -1,6 +1,6 @@
 import Property from './Property';
 
-class AnyProperty extends Property {
+class IdProperty extends Property {
 
     constructor(value: any) {
         super(value);
@@ -9,4 +9,4 @@ class AnyProperty extends Property {
 
 }
 
-export default AnyProperty;
+export default IdProperty;

@@ -22,7 +22,7 @@ class PageModel extends Model {
         ['content', HtmlProperty],
         ['metaTitle', AnyProperty],
         ['metaDescription', AnyProperty],
-    ]);
+    ])
 
 }
 

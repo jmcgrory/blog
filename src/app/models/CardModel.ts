@@ -1,14 +1,13 @@
 import Model from './Model';
-import TagModel from './TagModel';
-import { AnyProperty } from './Properties';
+import { AnyProperty, IdProperty } from './Properties';
 
 class CardModel extends Model {
 
-    public title: string;
-    public blurb: string;
-    public link: string;
-    public image: string;
-    public tags: TagModel[];
+    public title: AnyProperty;
+    public blurb: AnyProperty;
+    public link: AnyProperty;
+    public image: AnyProperty;
+    public tags: IdProperty[];
 
     constructor(data: object) {
         super(data);
@@ -22,8 +21,8 @@ class CardModel extends Model {
         ['blurb', AnyProperty],
         ['link', AnyProperty],
         ['image', AnyProperty],
-        ['tags', TagModel],
-    ]);
+        ['tags', IdProperty],
+    ])
 
 }
 

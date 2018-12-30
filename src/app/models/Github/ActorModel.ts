@@ -18,7 +18,12 @@ class ActorModel extends Model {
         ['displayLogin', AnyProperty],
         ['url', AnyProperty],
         ['avatarUrl', AnyProperty],
-    ]);
+    ])
+
+    /** @deprecated */
+    public setDefault = (): void => {
+        console.warn('This is here to appease the TSLIB gods.');
+    }
 
 }
 

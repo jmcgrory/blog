@@ -31,11 +31,13 @@ export class DashboardArticlesComponent implements OnInit {
   }
 
   selectArticle = (id: string): void => {
-    console.log('SELECT:', id);
     this.router.navigate(['dashboard/edit/', id]);
   }
 
   deleteArticle = (id: string): void => {
-    console.log('DELETE:', id);
+    if (window.confirm('Delete this article?')) {
+      console.log('DELETE:', id);
+      // TODO: CALL DELETE METHOD
+    }
   }
 }

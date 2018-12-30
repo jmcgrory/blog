@@ -18,7 +18,7 @@ abstract class Model {
     public updatedAt: Moment;
     public deletedAt: Moment;
 
-    constructor(data: any) { }
+    protected constructor(data: any) { }
 
     public static getStaticName = (): string => 'model';
 
@@ -53,7 +53,6 @@ abstract class Model {
             const appendage = (i > 0) ? `${current[0].toUpperCase()}${current.substring(1)}` : current;
             return `${prev}${appendage}`;
         });
-
     }
 
     protected defaultProperties = (): Map<string, any> => new Map([
@@ -63,9 +62,9 @@ abstract class Model {
         ['deletedAt', TimeProperty],
     ])
 
-    protected assignableProperties = (): Map<string, any> => new Map();
+    protected assignableProperties = (): Map<string, Property> => new Map();
 
-    protected getProperties = (): Map<string, any> => new Map([
+    protected getProperties = (): Map<string, Property> => new Map([
         ...this.defaultProperties(),
         ...this.assignableProperties(),
     ])
@@ -78,16 +77,17 @@ abstract class Model {
         [...this.getProperties().keys()].forEach(
             (key) => {
                 const propertyValue = this[key];
-                if (propertyValue instanceof Model) {
-                    object[key] = propertyValue.id;
-                } else if (propertyValue instanceof Property) {
+                // TODO: Remove
+                // if (propertyValue instanceof Model) {
+                //     object[key] = propertyValue.id;
+                // } else
+                if (propertyValue instanceof Property) {
                     object[key] = propertyValue.value;
                 }
             }
         );
         return object;
     }
-
 }
 
 export default Model;

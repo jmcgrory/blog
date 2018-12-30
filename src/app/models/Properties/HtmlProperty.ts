@@ -1,4 +1,4 @@
-import Property from "./Property";
+import Property from './Property';
 
 class HtmlProperty extends Property {
 

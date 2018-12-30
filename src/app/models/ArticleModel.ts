@@ -1,6 +1,7 @@
 import Model from './Model';
 import { TagModel, CategoryModel } from '.';
 import { AnyProperty, HtmlProperty } from './Properties';
+import IdProperty from './Properties/IdProperty';
 
 class ArticleModel extends Model {
 
@@ -8,8 +9,8 @@ class ArticleModel extends Model {
     blurb: AnyProperty;
     slug: AnyProperty;
     image: AnyProperty;
-    categories: CategoryModel[];
-    tags: TagModel[];
+    categories: IdProperty;
+    tags: IdProperty;
     content: HtmlProperty;
     metaTitle: AnyProperty;
     metaDescription: AnyProperty;
@@ -26,12 +27,12 @@ class ArticleModel extends Model {
         ['blurb', AnyProperty],
         ['slug', AnyProperty],
         ['image', AnyProperty],
-        ['tags', AnyProperty],
-        ['categories', AnyProperty],
+        ['tags', IdProperty],
+        ['categories', IdProperty],
         ['content', HtmlProperty],
         ['metaTitle', AnyProperty],
         ['metaDescription', AnyProperty],
-    ]);
+    ])
 
 }
 

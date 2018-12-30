@@ -19,17 +19,22 @@ class EventModel extends Model {
 
     public static getStaticName = (): string => 'event';
 
+    /**
+     * @todo despite what the IDE says, this is used within templates
+     */
     public getType = (): string => {
         return changeCase.title(this.type.value);
     }
 
-    protected assignableProperties = (): Map<string, any> => new Map([
-        ['type', AnyProperty],
-        ['actor', ActorModel],
-        ['repo', RepoModel],
-        ['payload', AnyProperty],
-    ]);
-
+    protected assignableProperties = (): Map<string, any> => {
+        const map = new Map([
+            ['type', AnyProperty],
+            ['payload', AnyProperty],
+        ]);
+        map.set('actor', ActorModel);
+        map.set('repo', RepoModel);
+        return map;
+    }
 }
 
 export default EventModel;

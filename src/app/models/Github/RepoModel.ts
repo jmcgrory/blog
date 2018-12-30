@@ -16,7 +16,12 @@ class RepoModel extends Model {
     protected assignableProperties = (): Map<string, any> => new Map([
         ['name', AnyProperty],
         ['url', AnyProperty],
-    ]);
+    ])
+
+    /** @deprecated */
+    public setDefault = (): void => {
+        console.warn('This is here to appease the TSLIB gods.');
+    }
 
 }
 

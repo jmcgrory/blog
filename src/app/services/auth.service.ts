@@ -32,7 +32,6 @@ export class AuthService {
         let params = new HttpParams();
         params = params.set('username', user.username.toString());
         params = params.set('password', user.password.toString());
-        console.log('[authenticateUser]:', user.username.value, user.password.value);
         return this.http.get<any>(
             `${this.getUrl()}/user/authenticate`,
             { headers: headers, params }
@@ -41,7 +40,6 @@ export class AuthService {
 
     public authenticateToken = (): Observable<boolean> => {
         const { username, token } = APIStore.getAuth();
-        console.log('[authenticateToken]:', username, token);
         const headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': `jwt ${token}`
