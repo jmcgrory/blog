@@ -4,7 +4,9 @@ class HtmlProperty extends Property {
 
     constructor(value: string) {
         super(value);
-        this.value = JSON.parse(value);
+        if (value && value.length) {
+            this.value = JSON.parse(value);
+        }
     }
 
 }
