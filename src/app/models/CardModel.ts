@@ -5,7 +5,7 @@ class CardModel extends Model {
 
     public title: AnyProperty;
     public blurb: AnyProperty;
-    public link: AnyProperty;
+    public slug: AnyProperty;
     public image: AnyProperty;
     public tags: IdProperty[];
 
@@ -19,7 +19,7 @@ class CardModel extends Model {
     protected assignableProperties = (): Map<string, any> => new Map([
         ['title', AnyProperty],
         ['blurb', AnyProperty],
-        ['link', AnyProperty],
+        ['slug', AnyProperty],
         ['image', AnyProperty],
         ['tags', IdProperty],
     ])

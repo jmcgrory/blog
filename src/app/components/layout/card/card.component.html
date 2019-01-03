@@ -1,6 +1,6 @@
 <div class="card">
 
-  <a href="card?.link" title="This is a card.">
+  <a routerLink="{{card.slug}}" title="This is a card.">
 
     <app-image></app-image>
 
@@ -8,7 +8,7 @@
 
     <time>{{ card?.createdAt }}</time>
 
-    <p *ngIf="card?.text">{{ card?.text }}</p>
+    <p *ngIf="card?.blurb">{{ card?.blurb }}</p>
 
   </a>
 
