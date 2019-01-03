@@ -1,5 +1,14 @@
 <h3>Articles</h3>
 
+<p>
+  <app-button
+          (emitter)="addArticle()"
+          [label]="'New Article'"
+          [level]="'success'"
+          [icon]="'add_box'">
+  </app-button>
+</p>
+
 <div class="table">
   <div class="trow">
     <div class="th">
