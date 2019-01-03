@@ -29,6 +29,7 @@ button {
 	padding: 0.5em 1em;
 	border-radius: 0.25em;
 	cursor: pointer;
+	@include flexbox;
 	@extend %monospace;
 
 	@each $level, $color in $palette {
@@ -78,5 +79,9 @@ button {
 		&:hover {
 		  @extend %ghost;
 		}
+	}
+
+	span:nth-child(1n+2) {
+		margin-left: 0.5em;
 	}
 }
