@@ -1,35 +1,37 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { APIService } from '../../../services/API.service';
 import { CategoryModel } from 'src/app/models';
+import APIFilter from '../../../models/Filter/APIFilter';
+import ArticleModel from '../../../models/ArticleModel';
 
 @Component({
     selector: 'app-articles',
     templateUrl: './articles.component.html',
     styleUrls: ['./articles.component.scss']
 })
-export class ArticlesComponent implements OnInit, OnDestroy {
+export class ArticlesComponent implements OnInit {
 
     categories: CategoryModel[];
-    subscription: Subscription;
+    articles: ArticleModel[];
 
     constructor(
-        private service: APIService
+        private apiService: APIService
     ) { }
 
     ngOnInit() {
-        // Get Ids first...
-        /*this.subscription = this.service.getModels().subscribe(
-            (data) => {
-                this.categories = data.map(
-                    (category) => new CategoryModel(category)
-                );
-            }
-        );*/
+        this.loadArticles();
     }
 
-    ngOnDestroy() {
-        this.subscription.unsubscribe();
+    loadArticles = (): void => {
+        const articleFilter = new APIFilter({});
+        this.apiService.getIds('article', articleFilter).subscribe((ids) => {
+            // TODO: Handle Errors
+            if (ids.length) {
+                this.apiService.getModels('article', ids).subscribe((articles) => {
+                    this.articles = articles.map((article) => new ArticleModel(article));
+                });
+            }
+        });
     }
 
 }
