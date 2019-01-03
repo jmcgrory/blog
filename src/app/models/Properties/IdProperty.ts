@@ -10,6 +10,11 @@ class IdProperty extends Property {
         super(value);
         this.value = value;
     }
+
+    /**
+     * Will return false until this class is decided...
+     */
+    protected isValid = (): boolean => false;
 }
 
 export default IdProperty;

@@ -69,24 +69,21 @@ abstract class Model {
         ...this.assignableProperties(),
     ])
 
-    /**
-     * @todo Can be reduce
-     */
     public toObject = (): object => {
-        const object = {};
-        [...this.getProperties().keys()].forEach(
-            (key) => {
-                const propertyValue = this[key];
-                // TODO: IdProperty will handle...
-                // if (propertyValue instanceof Model) {
-                //     object[key] = propertyValue.id;
-                // } else
-                if (propertyValue instanceof Property) {
-                    object[key] = propertyValue.value;
+        return [...this.getProperties().keys()].reduce(
+            (previous, next) => {
+                const value = this[next];
+                if (!value) {
+                    return previous;
                 }
-            }
+                const string = value.toString();
+                return string !== null ? { ...previous, [next]: string } : previous;
+            }, {}
         );
-        return object;
+    }
+
+    public toString = (): string => {
+        return JSON.stringify(this.toObject());
     }
 }
 

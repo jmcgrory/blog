@@ -9,6 +9,10 @@ class HtmlProperty extends Property {
         }
     }
 
+    public toString = (): string => {
+        return JSON.stringify(`${this.value}`);
+    }
+
 }
 
 export default HtmlProperty;

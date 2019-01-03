@@ -6,9 +6,13 @@ abstract class Property {
         this.value = value;
     }
 
+    protected isValid = (): boolean => true;
+
     public toString = (): string => {
-        return `${this.value}`;
+        return this.isValid() ? this.getString() : null;
     }
+
+    protected getString = (): string => `${this.value}`;
 
     public setDefault = (): void => {
         this.value = null;

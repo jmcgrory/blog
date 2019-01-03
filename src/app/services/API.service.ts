@@ -95,8 +95,18 @@ export class APIService {
         );
     }
 
-    public update = () => {
-        // '/update', 'patch', this.update, true
+    public update = (route: string, model: Model) => {
+        const { token } = APIStore.getAuth();
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `jwt ${token}`
+        });
+        const params = new HttpParams().set('id', model.id.toString());
+        return this.http.patch(
+            `${this.getUrl()}/${route}/update`,
+            model.toObject(),
+            { headers: headers, params }
+        );
     }
 
     public setActive = () => {

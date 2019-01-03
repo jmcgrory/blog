@@ -46,4 +46,9 @@ export class EditComponent implements OnInit {
         });
     }
 
+    updateArticle = (): void => {
+        this.apiService.update('article', this.article).subscribe((data) => {
+            console.log(data);
+        });
+    }
 }

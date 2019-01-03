@@ -37,7 +37,7 @@ export class DashboardArticlesComponent implements OnInit {
     addArticle = (): void => {
         const newArticle = new ArticleModel({});
         this.apiService.save('article', newArticle).subscribe((data) => {
-          console.log(data);
+          this.selectArticle(data['id']);
         });
     }
 
@@ -48,7 +48,9 @@ export class DashboardArticlesComponent implements OnInit {
     deleteArticle = (id: string): void => {
         if (window.confirm('Delete this article?')) {
           this.apiService.delete('article', id).subscribe((data) => {
-            this.loadArticles();
+            if (data) {
+              this.loadArticles();
+            }
           });
         }
     }

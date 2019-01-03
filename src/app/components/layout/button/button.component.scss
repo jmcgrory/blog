@@ -29,6 +29,7 @@ button {
 	padding: 0.5em 1em;
 	border-radius: 0.25em;
 	cursor: pointer;
+	@include justify-content(center);
 	@include flexbox;
 	@extend %monospace;
 

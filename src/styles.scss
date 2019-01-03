@@ -63,6 +63,11 @@ form {
 
     @extend %monospace;
 
+    textarea {
+        resize: vertical;
+        min-height: 100px;
+    }
+
     input, textarea, select, button {
         padding: 0.75em;
         width: 100%;

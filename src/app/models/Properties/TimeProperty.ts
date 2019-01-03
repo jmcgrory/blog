@@ -1,7 +1,7 @@
-import PrimitiveProperty from './Property';
+import Property from './Property';
 import * as moment from 'moment';
 
-class TimeProperty extends PrimitiveProperty {
+class TimeProperty extends Property {
 
     public value: any;
 
@@ -10,12 +10,16 @@ class TimeProperty extends PrimitiveProperty {
         this.value = moment(value);
     }
 
-    public fromNow = (): string => {
-        return moment().to(this.value);
+    protected getString = (): string => {
+        return this.value.format();
     }
 
-    public toString = (): string => {
-        return this.value.format();
+    protected isValid = (): boolean => {
+        return this.value.isValid();
+    }
+
+    public fromNow = (): string => {
+        return moment().to(this.value);
     }
 }
 
