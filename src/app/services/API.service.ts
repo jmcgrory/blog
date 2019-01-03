@@ -5,6 +5,8 @@ import { catchError, retry } from 'rxjs/operators';
 import { API_URI } from '../config';
 import { UserModel } from 'src/app/models';
 import APIFilter from '../models/Filter/APIFilter';
+import Model from '../models/Model';
+import APIStore from '../application/APIStore';
 
 type Base = 'article' | 'category' | 'tag' | 'user' | 'page';
 
@@ -25,10 +27,10 @@ export class APIService {
             message = error.error.message;
         }
         return throwError(message);
-    };
+    }
 
     public ping = () => {
-        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         return this.http.get<any>(
             `${this.getUrl()}/ping`,
             { headers: headers }
@@ -36,7 +38,7 @@ export class APIService {
     }
 
     public getIds = (route: string, filters: APIFilter) => {
-        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         let params = new HttpParams();
         if (filters !== null) {
             [...filters.toMap().entries()].forEach(([key, value]) => {
@@ -50,29 +52,47 @@ export class APIService {
     }
 
     public getModel = (route: string, id: string) => {
-        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-        let params = new HttpParams().set('id', id);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const params = new HttpParams().set('id', id);
         return this.http.get<any>(
             `${this.getUrl()}/${route}/get`,
             { headers: headers, params }
-        )
+        );
     }
 
     public getModels = (route: string, ids: string[]) => {
-        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-        let params = new HttpParams().set('ids', ids.join(','));
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const params = new HttpParams().set('ids', ids.join(','));
         return this.http.get<any>(
             `${this.getUrl()}/${route}/get-many`,
             { headers: headers, params }
-        )
+        );
     }
 
-    public save = () => {
-        // '/save', 'put', this.save, true
+    public save = (route: string, model: Model) => {
+        const { token } = APIStore.getAuth();
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `jwt ${token}`
+        });
+        return this.http.put(
+            `${this.getUrl()}/${route}/save`,
+            model.toObject(),
+            { headers: headers }
+        );
     }
 
-    public remove = () => {
-        // '/remove', 'delete', this.remove, true
+    public delete = (route: string, id: string) => {
+        const { token } = APIStore.getAuth();
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `jwt ${token}`
+        });
+        const params = new HttpParams().set('id', id);
+        return this.http.delete(
+            `${this.getUrl()}/${route}/delete`,
+            { headers: headers, params }
+        );
     }
 
     public update = () => {
