@@ -37,7 +37,7 @@ export class APIService {
         ).pipe(catchError(this.handleError));
     }
 
-    public getIds = (route: string, filters: APIFilter) => {
+    public getIds = (route: Base, filters: APIFilter) => {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         let params = new HttpParams();
         if (filters !== null) {
@@ -45,13 +45,14 @@ export class APIService {
                 params = params.set(key, value);
             });
         }
+        console.log(params);
         return this.http.get<any>(
             `${this.getUrl()}/${route}/ids`,
             { headers: headers, params }
         ).pipe(catchError(this.handleError));
     }
 
-    public getModel = (route: string, id: string) => {
+    public getModel = (route: Base, id: string) => {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         const params = new HttpParams().set('id', id);
         return this.http.get<any>(
@@ -60,7 +61,7 @@ export class APIService {
         );
     }
 
-    public getModels = (route: string, ids: string[]) => {
+    public getModels = (route: Base, ids: string[]) => {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         const params = new HttpParams().set('ids', ids.join(','));
         return this.http.get<any>(
@@ -69,7 +70,7 @@ export class APIService {
         );
     }
 
-    public save = (route: string, model: Model) => {
+    public save = (route: Base, model: Model) => {
         const { token } = APIStore.getAuth();
         const headers = new HttpHeaders({
             'Content-Type': 'application/json',
@@ -82,7 +83,7 @@ export class APIService {
         );
     }
 
-    public delete = (route: string, id: string) => {
+    public delete = (route: Base, id: string) => {
         const { token } = APIStore.getAuth();
         const headers = new HttpHeaders({
             'Content-Type': 'application/json',
@@ -95,7 +96,7 @@ export class APIService {
         );
     }
 
-    public update = (route: string, model: Model) => {
+    public update = (route: Base, model: Model) => {
         const { token } = APIStore.getAuth();
         const headers = new HttpHeaders({
             'Content-Type': 'application/json',
