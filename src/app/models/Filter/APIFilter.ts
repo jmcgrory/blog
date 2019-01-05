@@ -11,6 +11,7 @@ class APIFilter {
     private offset: number;
     private id: string;
     private ids: string[];
+    private match: object;
 
     public constructor(data: object) {
         this.buildFromProperties(data);
@@ -32,18 +33,18 @@ class APIFilter {
         'orderBy',
         'offset',
         'id',
-        'ids'
-    ];
+        'ids',
+        'match'
+    ]
 
     public toMap = (): Map<string, string> => {
-        let map = new Map();
-        this.getProperties().forEach((property) => {
+        return this.getProperties().reduce((previous, property) => {
             const value = this[property];
             if (this.valueIsValid(value)) {
-                map.set(property, `${value}`);
+                previous.set(property, `${value}`);
             }
-        });
-        return map;
+            return previous;
+        }, new Map([]));
     }
 
     private valueIsValid = (value: any): boolean => {
