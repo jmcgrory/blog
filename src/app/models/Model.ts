@@ -17,8 +17,6 @@ abstract class Model {
 
     public static getStaticName = (): string => 'model';
 
-
-
     public getModelName = (): string => {
         // TS requires 'any' type to access constructor methods
         const constructor: any = this.constructor;
