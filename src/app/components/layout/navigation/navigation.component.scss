@@ -8,11 +8,6 @@ header {
     @include align-items(baseline);
 }
 
-h1, h2, h3, h4, h5, h6 {
-    margin: 0 auto;
-    @include flex-shrink(0);
-}
-
 nav {
     @include flex-grow(1);
 

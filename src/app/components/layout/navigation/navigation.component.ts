@@ -9,7 +9,7 @@ import NavItem from '../../../models/Navigation/NavItem';
 export class NavigationComponent implements OnInit {
 
   @Input() headingText: string;
-  @Input() headingLevel: number = 1;
+  @Input() headingLevel: number = 2;
   @Input() isMain: boolean = false;
   @Input() items: NavItem[];
   public heading: string;
