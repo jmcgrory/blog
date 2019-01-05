@@ -1,15 +1,8 @@
 <div class="card">
-
   <a routerLink="{{card.slug}}" title="This is a card.">
-
-    <app-image></app-image>
-
+    <app-image [aspect]="'portrait'"></app-image>
     <h3>{{ card?.title }}</h3>
-
     <time>{{ card?.createdAt }}</time>
-
     <p *ngIf="card?.blurb">{{ card?.blurb }}</p>
-
   </a>
-
 </div>

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit } from '@angular/core';
+
+type Aspect = 'portrait' | 'landscape' | 'square' | 'auto';
 
 @Component({
   selector: 'app-image',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImageComponent implements OnInit {
 
-  constructor() { }
+  @Input() src: string = './assets/placeholder.jpg';
+  @Input() aspect: Aspect = 'auto';
+  classNames: string[];
 
-  ngOnInit() {
+  constructor() {
+  }
+
+  ngOnInit(): void {
+    this.updateClassnames();
+  }
+
+  updateClassnames = (): void => {
+    this.classNames = ['image', this.aspect];
   }
 
 }

@@ -10,6 +10,6 @@ export class CardComponent {
 
   @Input() card: CardModel;
 
-  constructor() { }
+  constructor() {}
 
 }

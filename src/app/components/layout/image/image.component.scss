@@ -3,15 +3,35 @@
 .image {
 
     margin: 1em auto;
-
-    // Placeholder Below
-
-    height: 0;
-
-    padding-bottom: 33.33%;
-
-    width: 100%;
-
     background: $shade-light;
 
+    &:not(.auto) {
+        position: relative;
+        overflow: hidden;
+        height: 0;
+        width: 100%;
+
+        img {
+            position: absolute;
+            object-fit: cover;
+            height: 100%;
+        }
+    }
+
+    &.portrait {
+        padding-bottom: 140%;
+    }
+
+    &.landscape {
+        padding-bottom: 33.33%;
+    }
+
+    &.square {
+        padding-bottom: 100%;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+    }
 }
