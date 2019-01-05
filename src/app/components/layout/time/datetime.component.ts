@@ -5,8 +5,8 @@ import TimeProperty from '../../../models/Properties/TimeProperty';
     selector: 'app-datetime',
     template: `
         <time [attr.datetime]="datetime.toString()">
-            <i class="calender_today"></i>
-            {{ datetime.toString() | date: 'long' }}
+            <i class="icon">calender_today</i>
+            {{ datetime.toString() | date: 'full' }}
         </time>`
 })
 export class DatetimeComponent {
