@@ -1,3 +1,7 @@
-<p>
-  article works!
-</p>
+<h1>{{article?.title.toString()}}</h1>
+
+<app-datetime *ngIf="article" [datetime]="article?.createdAt"></app-datetime>
+
+<app-content *ngIf="article" [content]="article.content.value"></app-content>
+
+[Load related cards when we have cat/tags]

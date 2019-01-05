@@ -3,6 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import ArticleModel from '../../../models/ArticleModel';
+import { APIService } from '../../../services/API.service';
+import APIFilter from '../../../models/Filter/APIFilter';
+import {CardModel} from '../../../models';
 
 @Component({
   selector: 'app-article',
@@ -11,20 +15,35 @@ import { Observable } from 'rxjs';
 })
 export class ArticleComponent implements OnInit {
 
-  constructor(
-      private route: ActivatedRoute
-  ) { }
+    article: ArticleModel;
 
-  ngOnInit() {
-    this.getArticleIdSub().subscribe((data) => {
-      console.log(data);
-    });
-  }
+    constructor(
+        private route: ActivatedRoute,
+        private apiService: APIService
+    ) { }
 
-  getArticleIdSub = (): Observable<string> => {
-    return this.route.paramMap.pipe(
-        map((params: ParamMap) => params.get('slug'))
-    );
-  }
+    ngOnInit() {
+        this.getArticleSlugSub().subscribe((data) => {
+            this.getArticleIdSub(data).subscribe((string) => {
+                this.setArticle(string);
+            });
+        });
+    }
 
+    getArticleSlugSub = (): Observable<string> => {
+        return this.route.paramMap.pipe(
+            map((params: ParamMap) => params.get('slug'))
+        );
+    }
+
+    getArticleIdSub = (slug: string): Observable<string> => {
+        const articleFilter = new APIFilter({ match: `slug:${slug}` });
+        return this.apiService.getIds('article', articleFilter);
+    }
+
+    setArticle = (id: string): void => {
+        this.apiService.getModel('article', id).subscribe((data) => {
+            this.article = new ArticleModel(data);
+        });
+    }
 }
