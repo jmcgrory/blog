@@ -9,9 +9,15 @@ abstract class Model {
     public updatedAt: Moment;
     public deletedAt: Moment;
 
-    protected constructor(data: any) { }
+    /**
+     * Base Model Constructor
+     * @todo should call fromData etc. here...
+     */
+    protected constructor(data: any) {}
 
     public static getStaticName = (): string => 'model';
+
+
 
     public getModelName = (): string => {
         // TS requires 'any' type to access constructor methods
