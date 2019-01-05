@@ -21,6 +21,7 @@ import { LoginComponent } from './components/page/login/login.component';
 import { DashboardComponent } from './components/page/dashboard/dashboard.component';
 import { MediaComponent } from './components/page/media/media.component';
 import { EditComponent } from './components/page/dashboard/edit/edit.component';
+import { DashboardArticlesComponent } from './components/page/dashboard/article/dashboardArticles.component';
 
 // Layout
 
@@ -33,44 +34,45 @@ import { ImageComponent } from './components/layout/image/image.component';
 import { GiteventComponent } from './components/layout/gitevent/gitevent.component';
 import { NoticesComponent } from './components/layout/notices/notices.component';
 import { NoticeComponent } from './components/layout/notice/notice.component';
+import { DatetimeComponent } from './components/layout/time/datetime.component';
 
 // Custom
 
 import { MarkdownModule } from 'ngx-markdown';
-import { DashboardArticlesComponent } from './components/page/dashboard/article/dashboardArticles.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    AboutComponent,
-    ArticlesComponent,
-    ArticleComponent,
-    ContactComponent,
-    ErrorComponent,
-    LoginComponent,
-    DashboardComponent,
-    MediaComponent,
-    EditComponent,
-    ButtonComponent,
-    NoticeComponent,
-    ContentComponent,
-    CardComponent,
-    NavigationComponent,
-    CardsComponent,
-    ImageComponent,
-    GiteventComponent,
-    NoticesComponent,
-    DashboardArticlesComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MarkdownModule.forRoot(),
-    HttpClientModule,
-    FormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        AboutComponent,
+        ArticlesComponent,
+        ArticleComponent,
+        ContactComponent,
+        ErrorComponent,
+        LoginComponent,
+        DashboardComponent,
+        MediaComponent,
+        EditComponent,
+        ButtonComponent,
+        NoticeComponent,
+        ContentComponent,
+        CardComponent,
+        NavigationComponent,
+        CardsComponent,
+        ImageComponent,
+        GiteventComponent,
+        NoticesComponent,
+        DashboardArticlesComponent,
+        DatetimeComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MarkdownModule.forRoot(),
+        HttpClientModule,
+        FormsModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
 })
 export class AppModule { }
