@@ -25,6 +25,9 @@ h1, h2, h3, h4, h5, h6 {
 
     .navigation & {
         text-transform: uppercase;
+        margin: 0 auto;
+        font-size: 1.25em;
+        @include flex-shrink(0);
     }
 }
 
@@ -111,4 +114,13 @@ form {
 
     margin-bottom: 1em;
 
+}
+
+time {
+    justify-content: start;
+    @include flexbox;
+}
+
+.icon {
+    width: auto;
 }
