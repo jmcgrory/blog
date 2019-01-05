@@ -14,9 +14,19 @@ class EventModel extends Model {
     constructor(data: object) {
         super(data);
         this.fromData(data, true);
+        this.setActorModel(data['actor']);
+        this.setRepoModel(data['repo']);
     }
 
     public static getStaticName = (): string => 'event';
+
+    private setActorModel = (actorObject: object): void => {
+        this.actor = actorObject ? new ActorModel(actorObject) : null;
+    }
+
+    private setRepoModel = (repoObject: object): void => {
+        this.repo = repoObject ? new RepoModel(repoObject) : null;
+    }
 
     /**
      * Returns formatted event type
@@ -32,8 +42,6 @@ class EventModel extends Model {
             ['type', AnyProperty],
             ['payload', AnyProperty],
         ]);
-        map.set('actor', ActorModel);
-        map.set('repo', RepoModel);
         return map;
     }
 }

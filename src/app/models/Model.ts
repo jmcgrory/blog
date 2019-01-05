@@ -4,15 +4,6 @@ import { Moment } from 'moment';
 
 abstract class Model {
 
-    /**
-     * This is only here because of below Odd err on here w/ Actor/RepoModel
-     * 
-     * Being called with typeof Property but nowhere is that happening?
-     * 
-     * @todo Requires fix before any expansion of Property
-     */
-    public value: any;
-
     public id: AnyProperty;
     public createdAt: Moment;
     public updatedAt: Moment;
@@ -45,8 +36,8 @@ abstract class Model {
         if (indexOfUnderscore === -1) {
             return string;
         }
-        const characterArray = string.split('_').filter((char) => char.length);
-        return characterArray.reduce((prev, current, i) => {
+        const charArray = string.split('_').filter((char) => char.length);
+        return charArray.reduce((prev, current, i) => {
             if (!current) {
                 return prev + current;
             }
