@@ -1,0 +1,71 @@
+@import "~src/app/partials/variables";
+@import "~src/app/partials/mixins";
+
+.dropdown-container {
+
+  .title {
+    display: block;
+    padding-bottom: 0.5em;
+  }
+
+  .dropdown {
+    position: relative;
+    border: 1px solid $shade-medium;
+    min-width: 250px;
+  }
+
+  .placeholder {
+    padding: 0.5em;
+    cursor: pointer;
+    color: $shade-medium;
+    justify-content: space-between;
+
+    &:hover {
+      color: $shade-dark;
+    }
+  }
+
+  ul {
+    position: absolute;
+    z-index: 10;
+    margin: 0 auto;
+    list-style: none;
+    top: 100%;
+    left: -1px;
+    width: 100%;
+    background: white;
+    border: 1px solid $shade-medium;
+    max-height: 500px;
+    overflow-y: scroll;
+
+    li {
+      padding: 0.5em;
+      border-bottom: 1px dashed $shade-light;
+      text-transform: capitalize;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background: $shade-light;
+        cursor: pointer;
+      }
+
+      &.selected {
+        color: white;
+        background: $success;
+      }
+
+      &.invalid {
+        background: white;
+        color: $shade-light;
+        cursor: default;
+      }
+
+      .icon {
+        padding-right: 0.5em;
+      }
+    }
+  }
+}
