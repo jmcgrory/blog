@@ -8,6 +8,7 @@ import { CardModel } from '../../../models';
 })
 export class CardComponent {
 
+  @Input() url: string = '';
   @Input() card: CardModel;
 
   constructor() {}

@@ -1,5 +1,5 @@
 <div class="card">
-  <a routerLink="{{card.slug}}" title="This is a card.">
+  <a routerLink="{{url}}{{card.slug}}" title="This is a card.">
     <app-image [aspect]="'portrait'"></app-image>
     <h3>{{ card?.title }}</h3>
     <time>{{ card?.createdAt }}</time>

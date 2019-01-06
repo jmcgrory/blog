@@ -9,6 +9,7 @@ import { CardModel } from '../../../models';
 export class CardsComponent implements OnInit {
 
   @Input() cards: CardModel[];
+  @Input() url: string = '/articles/';
 
   ngOnInit() { }
 
