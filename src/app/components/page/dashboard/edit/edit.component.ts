@@ -5,6 +5,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import ArticleModel from '../../../../models/ArticleModel';
+import Notice from '../../../../models/Notice/Notice';
 
 @Component({
     selector: 'app-edit',
@@ -48,7 +49,10 @@ export class EditComponent implements OnInit {
 
     updateArticle = (): void => {
         this.apiService.update('article', this.article).subscribe((data) => {
-            console.log(data);
+            this.noticeService.add(new Notice(
+                `Successfully updated article`,
+                'success'
+            ));
         });
     }
 }
