@@ -1,10 +1,6 @@
-import Model from './Model';
-import { AnyProperty } from './Properties';
+import GroupModel from './GroupModel';
 
-class CategoryModel extends Model {
-
-    public name: string;
-    public description: string;
+class CategoryModel extends GroupModel {
 
     constructor(data: object) {
         super(data);
@@ -12,11 +8,6 @@ class CategoryModel extends Model {
     }
 
     public static getStaticName = (): string => 'category';
-
-    protected assignableProperties = (): Map<string, any> => new Map([
-        ['name', AnyProperty],
-        ['description', AnyProperty],
-    ])
 
 }
 
