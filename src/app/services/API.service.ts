@@ -8,7 +8,7 @@ import APIFilter from '../models/Filter/APIFilter';
 import Model from '../models/Model';
 import APIStore from '../application/APIStore';
 
-type Base = 'article' | 'category' | 'tag' | 'user' | 'page';
+type Base = 'article' | 'group' | 'tag' | 'user' | 'page';
 
 @Injectable({
     providedIn: 'root'
@@ -45,7 +45,6 @@ export class APIService {
                 params = params.set(key, value);
             });
         }
-        console.log(params);
         return this.http.get<any>(
             `${this.getUrl()}/${route}/ids`,
             { headers: headers, params }
