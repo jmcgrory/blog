@@ -1,3 +1,18 @@
-<p>Some kind of Tag/Category filtration.</p>
+<div class="row">
+    <div class="col">
+        <app-dropdown
+                [title]="'Select Categories'"
+                [values]="categories"
+                (select)="selectCategory($event)">
+        </app-dropdown>
+    </div>
+    <div class="col">
+        <app-dropdown
+                [title]="'Select Tags'"
+                [values]="tags"
+                (select)="selectTag($event)">
+        </app-dropdown>
+    </div>
+</div>
 
 <app-cards [cards]="articles"></app-cards>
