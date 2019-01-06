@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import { APIService } from '../../../../services/API.service';
 import ArticleModel from '../../../../models/ArticleModel';
+import { NoticeService } from '../../../../services/notice.service';
 import APIFilter from '../../../../models/Filter/APIFilter';
 import { Router } from '@angular/router';
+import Notice from '../../../../models/Notice/Notice';
 
 @Component({
     selector: 'app-dashboard-articles',
@@ -15,6 +17,7 @@ export class DashboardArticlesComponent implements OnInit {
 
     constructor(
         private apiService: APIService,
+        private noticeService: NoticeService,
         private router: Router,
     ) { }
 
@@ -36,9 +39,11 @@ export class DashboardArticlesComponent implements OnInit {
 
     addArticle = (): void => {
         const newArticle = new ArticleModel({});
-        this.apiService.save('article', newArticle).subscribe((data) => {
-          this.selectArticle(data['id']);
-        });
+        this.apiService.save('article', newArticle).subscribe(
+            (data) => {
+              this.selectArticle(data['id']);
+            }
+        );
     }
 
     selectArticle = (id: string): void => {
@@ -47,10 +52,15 @@ export class DashboardArticlesComponent implements OnInit {
 
     deleteArticle = (id: string): void => {
         if (window.confirm('Delete this article?')) {
-          this.apiService.delete('article', id).subscribe((data) => {
-            if (data) {
-              this.loadArticles();
-            }
+            this.apiService.delete('article', id).subscribe(
+                (data) => {
+                if (data) {
+                    this.noticeService.add(new Notice(
+                        `Successfully updated article`,
+                        'success'
+                    ));
+                    this.loadArticles();
+                }
           });
         }
     }
