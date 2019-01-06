@@ -1,0 +1,47 @@
+<h1>Tags & Categories</h1>
+
+<div class="table">
+    <div class="trow">
+        <div class="th">
+            <span>Name</span>
+        </div>
+        <div class="th">
+            <span>Type</span>
+        </div>
+        <div class="th">
+            <span>Description</span>
+        </div>
+        <div class="th">
+            <span>Actions</span>
+        </div>
+    </div>
+    <div class="trow" *ngFor="let group of groups; let i = index">
+        <div class="td">
+            <input type="text" [(ngModel)]="group.name.value" name="name-{{i}}">
+        </div>
+        <div class="td">
+            <input type="text" [(ngModel)]="group.type.value" name="type-{{i}}">
+        </div>
+        <div class="td">
+            <input type="text" [(ngModel)]="group.description.value" name="description-{{i}}">
+        </div>
+        <div class="td">
+            <app-button (emitter)="updateGroup(group)" [icon]="'edit'" [level]="'success'"></app-button>
+            <app-button (emitter)="deleteGroup(group)" [icon]="'delete'" [level]="'warning'"></app-button>
+        </div>
+    </div>
+    <div class="trow">
+        <div class="td">
+            <input type="text" name="newGroupName" [(ngModel)]="newGroup.name">
+        </div>
+        <div class="td">
+            <input type="text" name="newGroupType" [(ngModel)]="newGroup.type">
+        </div>
+        <div class="td">
+            <input type="text" name="newGroupDescription" [(ngModel)]="newGroup.description">
+        </div>
+        <div class="td">
+            <app-button (emitter)="addGroup(newGroup)" [icon]="'save'" [level]="'success'"></app-button>
+        </div>
+    </div>
+</div>
