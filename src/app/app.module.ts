@@ -34,7 +34,7 @@ import { ImageComponent } from './components/layout/image/image.component';
 import { GiteventComponent } from './components/layout/gitevent/gitevent.component';
 import { NoticesComponent } from './components/layout/notices/notices.component';
 import { NoticeComponent } from './components/layout/notice/notice.component';
-import { DatetimeComponent } from './components/layout/time/datetime.component';
+import { DatetimeComponent } from './components/layout/datetime/datetime.component';
 
 // Custom
 

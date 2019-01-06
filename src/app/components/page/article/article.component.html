@@ -2,6 +2,10 @@
 
 <app-datetime *ngIf="article" [datetime]="article?.createdAt"></app-datetime>
 
+<hr class="subtle">
+
 <app-content *ngIf="article" [content]="article.content.value"></app-content>
+
+<hr class="subtle">
 
 [Load related cards when we have cat/tags]

@@ -1,5 +1,6 @@
 <div class="cards">
-
-  <app-card *ngFor="let card of cards" [card]="card" [url]="url"></app-card>
-
+  <div class="cards-single" *ngFor="let card of cards">
+    <app-card [card]="card" [url]="url"></app-card>
+  </div>
+  <span *ngIf="!cards.length">There is currently nothing to show.</span>
 </div>

@@ -1,11 +1,13 @@
 @import '../../../partials/mixins';
 
 .cards {
-
     @include flexbox;
-
     @include flex-wrap(wrap);
+    @include justify-content(space-between);
 
-    @include flex-basis(25%);
-
+    .cards-single {
+        width: 22.5%;
+        @include flex-grow(0);
+        @include flex-shrink(1);
+    }
 }

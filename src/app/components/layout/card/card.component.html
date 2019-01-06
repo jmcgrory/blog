@@ -2,7 +2,7 @@
   <a routerLink="{{url}}{{card.slug}}" title="This is a card.">
     <app-image [aspect]="'portrait'"></app-image>
     <h3>{{ card?.title }}</h3>
-    <time>{{ card?.createdAt }}</time>
+    <app-datetime [datetime]="card?.createdAt.toString()" [format]="'short'"></app-datetime>
     <p *ngIf="card?.blurb">{{ card?.blurb }}</p>
   </a>
 </div>
