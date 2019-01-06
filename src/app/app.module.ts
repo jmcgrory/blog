@@ -22,6 +22,7 @@ import { DashboardComponent } from './components/page/dashboard/dashboard.compon
 import { MediaComponent } from './components/page/media/media.component';
 import { EditComponent } from './components/page/dashboard/edit/edit.component';
 import { DashboardArticlesComponent } from './components/page/dashboard/article/dashboardArticles.component';
+import { MetaComponent } from './components/page/dashboard/meta/meta.component';
 
 // Layout
 
@@ -35,6 +36,7 @@ import { GiteventComponent } from './components/layout/gitevent/gitevent.compone
 import { NoticesComponent } from './components/layout/notices/notices.component';
 import { NoticeComponent } from './components/layout/notice/notice.component';
 import { DatetimeComponent } from './components/layout/datetime/datetime.component';
+import { DropdownComponent } from './components/layout/dropdown/dropdown.component';
 
 // Custom
 
@@ -63,7 +65,9 @@ import { MarkdownModule } from 'ngx-markdown';
         GiteventComponent,
         NoticesComponent,
         DashboardArticlesComponent,
-        DatetimeComponent
+        DatetimeComponent,
+        DropdownComponent,
+        MetaComponent,
     ],
     imports: [
         BrowserModule,

@@ -17,6 +17,7 @@ import { DashboardComponent } from './components/page/dashboard/dashboard.compon
 import { MediaComponent } from './components/page/media/media.component';
 import { EditComponent } from './components/page/dashboard/edit/edit.component';
 import { DashboardArticlesComponent } from './components/page/dashboard/article/dashboardArticles.component';
+import {MetaComponent} from './components/page/dashboard/meta/meta.component';
 
 // Guards
 import { AuthGuard } from './guards/auth.guard';
@@ -40,6 +41,7 @@ const routes: Routes = [
           { path: '', component: DashboardArticlesComponent },
           { path: 'media', component: MediaComponent },
           { path: 'edit/:id', component: EditComponent },
+          { path: 'meta', component: MetaComponent },
         ],
       }
     ]
